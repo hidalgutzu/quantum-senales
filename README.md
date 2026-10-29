@@ -3,8 +3,8 @@
 **Quant crypto signals: a pattern model estimates the probability of every trade, proves itself on data it never saw, and only then says BUY or SELL.**
 
 <p align="center">
-  <img src="screenshot-v3.png" width="49%" alt="Decisión">
-  <img src="screenshot-02-v3.png" width="49%" alt="Motor y radar">
+  <img src="https://dedalomultimedia.com/trading/img/screenshot-v3.png" width="49%" alt="Decisión">
+  <img src="https://dedalomultimedia.com/trading/img/screenshot-02-v3.png" width="49%" alt="Motor y radar">
 </p>
 
 
