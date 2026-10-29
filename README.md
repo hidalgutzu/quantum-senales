@@ -2,11 +2,13 @@
 
 **Quant crypto signals: a pattern model estimates the probability of every trade, proves itself on data it never saw, and only then says BUY or SELL.**
 
-![QUANTUM Signals](screenshot.png)
+<p align="center">
+  <img src="screenshot-v3.png" width="49%" alt="Decisión">
+  <img src="screenshot-02-v3.png" width="49%" alt="Motor y radar">
+</p>
 
-![QUANTUM Signals](screenshot-02.png)
 
-**[▶ Live demo](https://dedalomultimedia.com/trading/quantum-senales.html)** · [Español](#español)
+**[▶ Live demo](https://dedalomultimedia.com/trading/quantum-alertas.html)** · [Español](#español)
 
 ## How it decides (Simons-style, no human opinion)
 
