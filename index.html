@@ -1,440 +1,1004 @@
 <!doctype html>
-<html lang="es">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>QUANTUM Señales</title>
+<title>QUANTUM Signals · Quant Crypto Signals with Telegram Alerts</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap">
+
+<!-- ═══ SEO ═══ -->
+<meta name="description" content="Free quant crypto signals for BTC, ETH, SOL, XRP and ADA on 4H, 1D, 1W and 1M. A pattern model estimates the probability of each trade, validated out-of-sample, with entry, stop, targets, position size and Telegram alerts.">
+<meta name="keywords" content="quant crypto signals, trading signals, bitcoin signals, XRP signals, ethereum, solana, cardano, machine learning trading, telegram trading bot, position size calculator, Jim Simons, señales cripto">
+<meta name="author" content="Dédalo Multimedia">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#07060C">
+<meta name="color-scheme" content="dark">
+<meta name="application-name" content="QUANTUM Signals">
+<meta name="apple-mobile-web-app-title" content="QUANTUM">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://dedalomultimedia.com/trading/quantum-senales.html">
+<link rel="alternate" hreflang="en" href="https://dedalomultimedia.com/trading/quantum-senales.html">
+<link rel="alternate" hreflang="es" href="https://dedalomultimedia.com/trading/quantum-senales.html?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://dedalomultimedia.com/trading/quantum-senales.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238B7CFF'/%3E%3Cstop offset='1' stop-color='%2367E8F9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Crect x='6' y='6' width='20' height='20' rx='5' fill='%2307060C'/%3E%3Cpath d='M10 20l4-5 3 3 5-7' stroke='%233EE6A0' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<!-- ═══ Open Graph / Social ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QUANTUM Signals · Dédalo Multimedia">
+<meta property="og:title" content="QUANTUM Signals · Quant crypto BUY / SELL / WAIT">
+<meta property="og:description" content="A pattern model estimates the probability of each trade, validated on data it never saw. Entry, stop, targets, position size and Telegram alerts. Free and open source.">
+<meta property="og:url" content="https://dedalomultimedia.com/trading/quantum-senales.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/hidalgutzu/quantum-senales/main/screenshot.png">
+<meta property="og:image:alt" content="QUANTUM Signals dashboard with a buy/sell verdict, probability, trade ticket and model funnel">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QUANTUM Signals · Quant crypto BUY / SELL / WAIT">
+<meta name="twitter:description" content="Probability per trade, out-of-sample validation, entry, stop, targets, position size and Telegram alerts for BTC, ETH, SOL, XRP and ADA.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hidalgutzu/quantum-senales/main/screenshot.png">
+
+<!-- ═══ GEO (ubicación) ═══ -->
+<meta name="geo.region" content="MX-ROO">
+<meta name="geo.placename" content="Cancún, Quintana Roo, México">
+<meta name="geo.position" content="21.1619;-86.8515">
+<meta name="ICBM" content="21.1619, -86.8515">
+<meta name="language" content="English, Spanish">
+
+<!-- ═══ Datos estructurados (SEO / AEO / GEO para motores generativos) ═══ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","@id":"https://dedalomultimedia.com/#org","name":"Dédalo Multimedia","url":"https://dedalomultimedia.com",
+     "address":{"@type":"PostalAddress","addressLocality":"Cancún","addressRegion":"Quintana Roo","addressCountry":"MX"},
+     "sameAs":["https://github.com/hidalgutzu"]},
+    {"@type":"SoftwareApplication","@id":"https://dedalomultimedia.com/trading/quantum-senales.html#app",
+     "name":"QUANTUM Signals","alternateName":"QUANTUM Señales","applicationCategory":"FinanceApplication","operatingSystem":"Web browser",
+     "url":"https://dedalomultimedia.com/trading/quantum-senales.html",
+     "image":"https://raw.githubusercontent.com/hidalgutzu/quantum-senales/main/screenshot.png",
+     "description":"Quantitative crypto signal tool for Bitcoin, Ethereum, Solana, XRP and Cardano on 4-hour, daily, weekly and monthly timeframes. A pattern model (k-nearest neighbors plus logistic regression on 11 market factors) estimates the probability that a trade reaches its target before its stop, validates itself out-of-sample, and outputs BUY, SELL or WAIT with entry zone, stop, targets, fractional-Kelly position size and Telegram alerts.",
+     "inLanguage":["en","es"],"isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+     "featureList":["Probability per trade from a pattern model","Out-of-sample validation","4H, 1D, 1W and 1M timeframes","ATR-based stop and targets","Fractional Kelly position sizing","Late-entry filter","Rejection funnel","Live track record","Telegram alerts"],
+     "author":{"@id":"https://dedalomultimedia.com/#org"},"codeRepository":"https://github.com/hidalgutzu/quantum-senales"},
+    {"@type":"WebPage","@id":"https://dedalomultimedia.com/trading/quantum-senales.html#page","url":"https://dedalomultimedia.com/trading/quantum-senales.html",
+     "name":"QUANTUM Signals · Quant Crypto Signals with Telegram Alerts","inLanguage":"en",
+     "about":{"@id":"https://dedalomultimedia.com/trading/quantum-senales.html#app"},"publisher":{"@id":"https://dedalomultimedia.com/#org"},
+     "speakable":{"@type":"SpeakableSpecification","cssSelector":["#aboutP"]}},
+    {"@type":"FAQPage","@id":"https://dedalomultimedia.com/trading/quantum-senales.html#faq","mainEntity":[
+      {"@type":"Question","name":"How does QUANTUM decide whether to buy or sell?","acceptedAnswer":{"@type":"Answer","text":"It turns every candle into 11 measurable factors (trend, momentum, RSI, MACD, Bollinger position, volatility, range position and volume) and estimates, with a k-nearest-neighbors model and a logistic regression, the probability that price hits target 1 before the stop. It only signals when that probability beats break-even with margin and the model passed an out-of-sample test."}},
+      {"@type":"Question","name":"What does validated out-of-sample mean?","acceptedAnswer":{"@type":"Answer","text":"The model is trained on the first 70% of each market's history and tested on the last 30%, data it never saw. If it does not beat break-even there, the tool stays on WAIT for that coin and timeframe."}},
+      {"@type":"Question","name":"Is this how Jim Simons traded?","acceptedAnswer":{"@type":"Answer","text":"It applies his public principles: no human opinion, many small statistical edges, strict validation and disciplined sizing. Renaissance Technologies' real models are secret and far more complex; QUANTUM is a transparent, simplified version."}},
+      {"@type":"Question","name":"How much should I put into a trade?","acceptedAnswer":{"@type":"Answer","text":"The risk per trade is the smaller of your own limit and a quarter of the Kelly fraction implied by the model's probability. Position size is that risk divided by the distance to the stop, capped by your maximum leverage."}},
+      {"@type":"Question","name":"Is it financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. It is an educational quantitative tool. Probabilities come from past data and do not guarantee future results. Always use the stop."}}
+    ]}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.binance.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
 <style>
-/* Layout: una columna tipo app. Veredicto gigante arriba, temporalidades, luego plan / cuánto meter / por qué / radar / alertas.
-   Mundo visual: oscuro sobrio, verde = comprar, rojo = vender, gris = esperar; un solo acento hielo. */
+/* Layout: contexto (moneda + temporalidad) → TARJETA DE DECISIÓN (primaria, grande, borde de haz) → motor (beams + embudo)
+   → paneles secundarios atenuados → configuración y FAQ plegables.
+   Mundo visual: terminal cuántica violeta-negra con aurora tenue; verde comprar, rosa vender, lavanda esperar. */
 :root{
-  --bg:#07090D; --card:#0D1118; --card-2:#121824; --line:#1C2330; --line-2:#283141;
-  --fg:#EEF2F7; --muted:#8C96A8; --faint:#5C6678;
-  --accent:#8CCBFF; --buy:#34D399; --sell:#FB7185; --wait:#A3AEC2; --warn:#F5B94C;
+  --bg:#07060C; --bg-2:#0D0B16; --surface:#100E1A; --surface-2:#16131F; --surface-3:#1E1A2B;
+  --line:rgba(255,255,255,.07); --line-2:rgba(255,255,255,.13);
+  --fg:#F3F1FA; --muted:#A09BB6; --faint:#6A6580;
+  --violet:#8B7CFF; --violet-2:#C9BEFF; --cyan:#67E8F9;
+  --buy:#3EE6A0; --sell:#FF6B8B; --wait:#B4AEC9; --warn:#F7C35F;
   --ui:"Geist",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
-  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
   color-scheme:dark;
 }
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
 html,body{background:var(--bg);color:var(--fg)}
-body{margin:0;font:400 14px/1.5 var(--ui);-webkit-font-smoothing:antialiased}
+body{margin:0;font:400 14px/1.5 var(--ui);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 *{box-sizing:border-box}
 button,input{font:inherit;color:inherit}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.app{max-width:940px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:14px}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:10px}
+
+.aurora{position:fixed;inset:-20% -10% auto;height:70vh;pointer-events:none;z-index:0;filter:blur(70px);opacity:.55}
+.aurora i{position:absolute;border-radius:50%;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vw;height:40vh;left:4%;top:8%;background:radial-gradient(circle,rgba(139,124,255,.45),transparent 65%)}
+.aurora i:nth-child(2){width:38vw;height:34vh;right:6%;top:0;background:radial-gradient(circle,rgba(103,232,249,.22),transparent 65%);animation-delay:-8s}
+.aurora i:nth-child(3){width:30vw;height:30vh;left:40%;top:22%;background:radial-gradient(circle,rgba(255,107,139,.14),transparent 65%);animation-delay:-14s}
+@keyframes drift{to{transform:translate3d(4vw,3vh,0) scale(1.12)}}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.035;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000,transparent 70%)}
+
+.app{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
 
 .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
-.mark{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg,var(--accent),#B5A3FF,var(--accent));position:relative}
-.mark::after{content:"";position:absolute;inset:5px;border-radius:5px;background:var(--bg)}
-.brand b{letter-spacing:.18em;font-size:13px;font-weight:650}
-.brand small{display:block;color:var(--muted);font-size:11px}
-.coins{display:flex;gap:6px;flex-wrap:wrap}
-.coin{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 13px;cursor:pointer;font:500 12.5px var(--mono);color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:all .2s}
-.coin i{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
-.coin:hover{color:var(--fg)}
-.coin[aria-pressed="true"]{color:var(--fg);border-color:var(--line-2);background:var(--card-2)}
-.icon-btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;cursor:pointer;color:var(--muted);font-size:12.5px}
-.icon-btn:hover{color:var(--fg)}
-button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.mark{width:32px;height:32px;border-radius:10px;background:conic-gradient(from 210deg,var(--violet),var(--cyan),var(--violet));position:relative;flex:none;box-shadow:0 0 24px rgba(139,124,255,.35)}
+.mark::after{content:"";position:absolute;inset:6px;border-radius:6px;background:var(--bg)}
+.brand h1{margin:0;font:700 14px/1.1 var(--ui);letter-spacing:.22em}
+.shiny{display:block;font-size:11.5px;margin-top:2px;background:linear-gradient(110deg,var(--faint) 35%,var(--violet-2) 50%,var(--faint) 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{from{background-position:120% 0}to{background-position:-120% 0}}
 
-.note{border:1px solid rgba(245,185,76,.3);background:rgba(245,185,76,.06);border-radius:12px;padding:10px 14px;font-size:12.5px;color:var(--muted)}
+.seg{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:14px;background:rgba(13,11,22,.8);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.seg .ind{position:absolute;top:4px;bottom:4px;left:4px;width:0;border-radius:10px;background:linear-gradient(180deg,var(--surface-3),var(--surface-2));box-shadow:inset 0 0 0 1px var(--line-2),0 0 0 1px rgba(139,124,255,.35),0 6px 20px -6px rgba(139,124,255,.55);transition:left .4s var(--ease),width .4s var(--ease);z-index:0}
+.seg button{position:relative;z-index:1;border:0;background:none;padding:7px 12px;border-radius:10px;font:500 12.5px var(--mono);color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-pressed="true"]{color:var(--fg)}
+.seg button:active{transform:scale(.97)}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--faint);opacity:.6;flex:none}
+.sdot.b{background:var(--buy);opacity:1;box-shadow:0 0 8px var(--buy)} .sdot.s{background:var(--sell);opacity:1;box-shadow:0 0 8px var(--sell)}
+.icon-btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(13,11,22,.8);border-radius:12px;padding:8px 12px;color:var(--muted);font-size:12.5px;transition:color .2s,border-color .2s,background .2s}
+.icon-btn:hover{color:var(--fg);border-color:var(--line-2);background:var(--surface-2)}
+.icon-btn svg{width:14px;height:14px}
+.icon-btn.spin svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.note{border:1px solid rgba(247,195,95,.28);background:rgba(247,195,95,.06);border-radius:14px;padding:10px 14px;font-size:12.5px;color:var(--muted)}
 .note b{color:var(--warn)}
 
-.hero{position:relative;border-radius:24px;padding:24px;background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(90% 120% at 0% 0%,var(--glow,transparent),transparent 60%);transition:background .4s}
-.h-coin{color:var(--muted);font-size:13px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
-.h-coin .px{font:500 15px var(--mono);color:var(--fg)}
-.verdict{font:650 clamp(44px,9vw,76px)/.95 var(--ui);letter-spacing:-.04em;margin:8px 0 10px}
-.v-buy{color:var(--buy)} .v-sell{color:var(--sell)} .v-wait{color:var(--wait)}
-.h-sub{font-size:15px;color:var(--fg);max-width:52ch}
-.h-sub span{color:var(--muted)}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.badge{border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;font-size:12px;color:var(--muted)}
-.badge b{color:var(--fg);font:500 12px var(--mono)}
-.badge.hot{border-color:rgba(52,211,153,.5);color:var(--buy)}
-.badge.hot-s{border-color:rgba(251,113,133,.5);color:var(--sell)}
-.ring{width:150px;text-align:center}
-.ring svg{display:block;margin:0 auto}
-.ring .lbl{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.35}
+.ctx{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ctx-label{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.live{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font:500 11.5px var(--mono);color:var(--muted)}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--warn)}
+.live.on i{background:var(--buy);box-shadow:0 0 0 4px rgba(62,230,160,.15);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.45}}
 
-.tfs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.tf{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:12px 14px;text-align:left;cursor:pointer;transition:all .2s}
-.tf:hover{border-color:var(--line-2)}
-.tf[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px rgba(140,203,255,.12)}
-.tf .t{font:500 11px var(--mono);color:var(--faint);letter-spacing:.06em}
-.tf .s{font-weight:650;font-size:16px;margin-top:3px}
-.tf .m{font-size:11.5px;color:var(--muted);margin-top:1px}
+/* ── TARJETA PRIMARIA ── */
+.primary{position:relative;isolation:isolate;border-radius:28px;padding:28px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;
+  background:radial-gradient(120% 120% at 0% 0%,var(--glow,rgba(139,124,255,.10)),transparent 55%),linear-gradient(180deg,rgba(22,19,31,.92),rgba(13,11,22,.92));border:1px solid var(--line-2);box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.primary::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--ang),transparent 0 60%,var(--beamA,var(--violet)) 75%,var(--cyan) 82%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 6s linear infinite;pointer-events:none;z-index:-1}
+@keyframes rot{to{--ang:360deg}}
+.eyebrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.eyebrow .px{font:500 15px var(--mono);color:var(--fg)}
+.verdict{font:800 clamp(56px,10vw,104px)/.9 var(--ui);letter-spacing:-.055em;margin:14px 0 12px;background:linear-gradient(180deg,#fff 10%,var(--vc,var(--wait)) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.verdict.in{animation:blurIn .7s var(--ease)}
+@keyframes blurIn{from{opacity:0;filter:blur(14px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
+.p-sub{margin:0;font-size:15px;line-height:1.55;color:var(--fg);max-width:46ch}
+.p-sub span{color:var(--muted)}
+.prob{margin-top:22px;display:grid;gap:10px}
+.prob-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.prob-num{font:600 44px/1 var(--mono);letter-spacing:-.04em}
+.primary.idle .prob-num{color:var(--muted)}
+.primary.idle .pbar span{opacity:.45}
+.prob-lbl{font-size:12.5px;color:var(--muted);max-width:28ch;line-height:1.35}
+.pbar{position:relative;height:8px;border-radius:999px;background:var(--surface-3);margin-bottom:14px}
+.pbar span{position:absolute;inset:0 auto 0 0;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--vc,var(--violet-2)));transition:width .8s var(--ease)}
+.pbar i{position:absolute;top:-5px;width:2px;height:18px;border-radius:2px;background:var(--fg);opacity:.7}
+.pbar b{position:absolute;top:14px;transform:translateX(-50%);font:400 10px var(--mono);color:var(--faint);white-space:nowrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.02);font-size:12px;color:var(--muted)}
+.chip b{font:500 12px var(--mono);color:var(--fg)}
+.chip svg{width:13px;height:13px}
+.chip.ok{border-color:rgba(62,230,160,.4);color:var(--buy)} .chip.no{border-color:rgba(255,107,139,.35);color:var(--sell)} .chip.hot{border-color:rgba(139,124,255,.55);color:var(--violet-2);background:rgba(139,124,255,.08)}
 
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;min-width:0}
+.ticket{border-radius:20px;background:rgba(7,6,12,.55);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:4px;transition:opacity .3s}
+.ticket.dim .t-row b,.ticket.dim .size-big{opacity:.55}
+.t-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.t-title{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.t-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.t-row span{color:var(--muted)}
+.t-row b{display:block;font:500 15px var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.t-row small{display:block;font:400 11px var(--mono);color:var(--faint);text-align:right;margin-top:1px}
+.t-row.stop b{color:var(--sell)} .t-row.tgt b{color:var(--buy)}
+.t-row.short.stop b{color:var(--buy)} .t-row.short.tgt b{color:var(--sell)}
+.size{margin-top:10px;padding:14px;border-radius:14px;background:linear-gradient(180deg,rgba(139,124,255,.10),rgba(139,124,255,.03));border:1px solid rgba(139,124,255,.22)}
+.size-lbl{font-size:12px;color:var(--muted)}
+.size-big{font:600 34px/1.1 var(--mono);letter-spacing:-.03em;margin-top:2px}
+.size-sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
+.size-sub b{color:var(--fg);font-weight:550}
+.btn-primary{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:12px;padding:11px 14px;font-weight:600;font-size:13.5px;color:#0B0816;background:linear-gradient(180deg,#fff,var(--violet-2));box-shadow:0 8px 24px -8px rgba(139,124,255,.7);transition:transform .15s,box-shadow .2s,filter .2s}
+.btn-primary:hover{filter:brightness(1.05);box-shadow:0 10px 30px -8px rgba(139,124,255,.9)}
+.btn-primary:active{transform:scale(.98)}
+.btn-primary svg{width:15px;height:15px}
+.p-foot{grid-column:1/-1;display:flex;align-items:end;gap:10px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.p-foot .ctx-label{margin-right:6px;align-self:center}
+.field{display:grid;gap:4px;font-size:11px;color:var(--faint)}
+.field input{width:112px;background:rgba(7,6,12,.6);border:1px solid var(--line-2);border-radius:10px;padding:7px 10px;font:500 13px var(--mono);transition:border-color .2s,box-shadow .2s}
+.field input:hover{border-color:rgba(139,124,255,.4)}
+.field input:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 3px rgba(139,124,255,.22)}
+
+.panel{position:relative;background:rgba(16,14,26,.72);border:1px solid var(--line);border-radius:20px;padding:18px;min-width:0;overflow:hidden;transition:border-color .25s}
+.spot{--mx:50%;--my:50%}
+.spot::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(139,124,255,.09),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.spot:hover{border-color:var(--line-2)}
+.spot:hover::after{opacity:1}
+.h2{margin:0;font-weight:600;font-size:14px;letter-spacing:-.01em}
+.sub{color:var(--faint);font-size:12px;margin-top:3px;line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .span{grid-column:1/-1}
-.c-t{font-weight:600;font-size:14px}
-.c-s{color:var(--faint);font-size:12px;margin-top:2px}
-.rows{display:grid;margin-top:12px}
-.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px}
-.row:last-child{border-bottom:0}
-.row span{color:var(--muted)}
-.row b{font:500 13.5px var(--mono);text-align:right}
-.row small{color:var(--faint);font:400 11.5px var(--mono);margin-left:6px}
-.chart{height:150px;margin-top:12px;position:relative}
-.chart canvas{width:100%;height:100%;display:block}
 
-.big{font:600 36px/1.05 var(--mono);letter-spacing:-.03em;margin:12px 0 4px}
-.big-sub{color:var(--muted);font-size:13px}
-.inline-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
-.field{display:grid;gap:4px;font-size:11.5px;color:var(--muted)}
-.field input{width:100%;background:var(--card-2);border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;font:500 13px var(--mono)}
+.beam-wrap{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;min-height:250px;margin-top:14px;padding:4px 2px}
+.beam-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.bcol{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.bcol.mid{align-items:center;justify-self:center}
+.bnode{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line-2);font:600 11px var(--mono);color:var(--muted);position:relative;transition:transform .2s,border-color .2s,box-shadow .2s}
+button.bnode:hover{transform:translateY(-2px);border-color:var(--violet);color:var(--fg)}
+.bnode .nd{position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;border:2px solid var(--bg);background:var(--faint)}
+.bnode .nd.b{background:var(--buy)} .bnode .nd.s{background:var(--sell)}
+.core{width:112px;height:112px;border-radius:30px;background:radial-gradient(circle at 30% 20%,rgba(139,124,255,.35),rgba(22,19,31,.95) 70%);border:1px solid rgba(139,124,255,.5);box-shadow:0 0 60px -10px rgba(139,124,255,.6);text-align:center;color:var(--fg)}
+.core b{display:block;font:700 11px var(--ui);letter-spacing:.16em}
+.core small{display:block;font:400 10px var(--mono);color:var(--violet-2);margin-top:3px}
+.core.busy{animation:corePulse 1.2s ease-in-out infinite}
+@keyframes corePulse{50%{box-shadow:0 0 90px -6px rgba(103,232,249,.75)}}
+.out{width:auto;min-width:132px;height:auto;padding:10px 12px;justify-items:start;text-align:left;border-radius:14px;font-family:var(--ui)}
+.out b{font:600 20px/1 var(--mono);color:var(--fg)}
+.out span{font-size:11px;color:var(--muted);margin-top:3px}
+.out.pass{border-color:rgba(62,230,160,.45)} .out.pass b{color:var(--buy)}
+.out.strong{border-color:rgba(139,124,255,.55)} .out.strong b{color:var(--violet-2)}
+.beam-dash{animation:dash var(--dur,2.4s) linear infinite;animation-delay:var(--delay,0s)}
+@keyframes dash{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.funnel{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px}
+.funnel li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:12.5px;color:var(--muted);padding:6px 0}
+.funnel li b{font:500 12.5px var(--mono);color:var(--fg)}
+.funnel .fb{grid-column:1/-1;height:3px;border-radius:2px;background:var(--surface-3);overflow:hidden}
+.funnel .fb span{display:block;height:100%;border-radius:2px;background:var(--faint);transition:width .7s var(--ease)}
+.funnel li.ok .fb span{background:var(--buy)} .funnel li.vi .fb span{background:var(--violet)}
 
-.why{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:9px}
-.why li{display:flex;gap:10px;font-size:13.5px;line-height:1.45}
-.why i{flex:none;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:11px;margin-top:1px}
-.why .p i{background:rgba(52,211,153,.14);color:var(--buy)}
-.why .n i{background:rgba(251,113,133,.14);color:var(--sell)}
-.why .z i{background:var(--card-2);color:var(--wait)}
+.heat{display:grid;grid-template-columns:44px repeat(4,minmax(0,1fr));gap:5px;margin-top:14px}
+.heat .hh{font:500 10.5px var(--mono);color:var(--faint);text-align:center;padding-bottom:2px}
+.heat .hr{font:600 12px var(--mono);color:var(--muted);display:flex;align-items:center}
+.cell{position:relative;height:46px;border-radius:11px;border:1px solid var(--line);background:var(--surface-2);font:500 12px var(--mono);color:var(--faint);display:grid;place-items:center;transition:transform .15s,box-shadow .2s,border-color .2s}
+.cell:hover{transform:translateY(-1px);border-color:var(--line-2);color:var(--fg)}
+.cell.sel{box-shadow:0 0 0 2px var(--violet),0 0 18px -2px rgba(139,124,255,.6);color:var(--fg)}
+.cell.st::after{content:"";position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:var(--violet-2);box-shadow:0 0 8px var(--violet)}
 
-.radar{display:grid;margin-top:10px}
-.r-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 6px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:10px;background:none;border-left:0;border-right:0;border-top:0;text-align:left;width:100%}
-.r-row:last-child{border-bottom:0}
-.r-row:hover{background:var(--card-2)}
-.r-sym{font:600 13px var(--mono)}
-.dots{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.dot{display:inline-flex;align-items:center;gap:4px;font:400 10.5px var(--mono);color:var(--faint)}
-.dot i{width:9px;height:9px;border-radius:3px;background:var(--line-2)}
-.dot.b i{background:var(--buy)} .dot.s i{background:var(--sell)}
-.r-v{font-weight:600;font-size:13px}
+.drv{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:11px}
+.drv li{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px;align-items:center;font-size:13px}
+.drv .dn{color:var(--fg)}
+.drv .dr{display:block;font-size:11.5px;color:var(--faint)}
+.dbar{position:relative;height:6px;border-radius:999px;background:var(--surface-3)}
+.dbar::before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line-2)}
+.dbar span{position:absolute;top:0;bottom:0;border-radius:999px;transition:all .6s var(--ease)}
 
-.tg-steps{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:13px;display:grid;gap:5px}
+.vkpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:14px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vkpi div{background:var(--surface);padding:10px 12px;min-width:0}
+.vkpi span{display:block;font-size:11px;color:var(--faint)}
+.vkpi b{display:block;font:500 16px var(--mono);margin-top:3px;white-space:nowrap}
+.chart{position:relative;height:150px;margin-top:12px}
+.chart canvas{display:block;width:100%;height:100%}
+.empty{position:absolute;inset:0;display:grid;place-items:center;color:var(--faint);font-size:12.5px;text-align:center;padding:16px}
+
+.jstats{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--muted)}
+.jstats b{font:500 13px var(--mono);color:var(--fg);margin-left:5px}
+.jsrc{font:500 10.5px var(--mono);padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);color:var(--muted)}
+.tbl{overflow-x:auto;margin-top:12px;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:8px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);background:var(--surface-2)}
+td{font-family:var(--mono)}
+tr:last-child td{border-bottom:0}
+th:first-child,td:first-child{text-align:left}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font:500 10.5px var(--mono);border:1px solid var(--line-2);color:var(--muted)}
+.pill.b{color:var(--buy);border-color:rgba(62,230,160,.4)} .pill.s{color:var(--sell);border-color:rgba(255,107,139,.4)} .pill.v{color:var(--violet-2);border-color:rgba(139,124,255,.45)}
+
+details.panel>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer}
+details.panel>summary::-webkit-details-marker{display:none}
+details.panel>summary::after{content:"";width:9px;height:9px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);transition:transform .25s;flex:none;margin-right:4px}
+details.panel[open]>summary::after{transform:rotate(-135deg)}
+details.panel>summary:hover .h2{color:var(--violet-2)}
+.tg-steps{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:13px;display:grid;gap:5px}
 .tg-steps b{color:var(--fg);font-weight:550}
 .tg-form{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto;gap:8px;margin-top:12px;align-items:end}
-.btn{border:0;border-radius:10px;padding:9px 14px;background:var(--accent);color:#06121F;font-weight:600;cursor:pointer;font-size:13px}
+.tg-form .field input{width:100%}
+.btn-sec{border:1px solid rgba(139,124,255,.45);background:rgba(139,124,255,.12);color:var(--violet-2);border-radius:10px;padding:8px 14px;font-weight:600;font-size:13px;transition:background .2s}
+.btn-sec:hover{background:rgba(139,124,255,.22)}
 .status{margin-top:10px;font-size:12.5px;color:var(--muted)}
 .status.ok{color:var(--buy)} .status.err{color:var(--sell)}
+.about p{color:var(--muted);max-width:72ch;margin:10px 0 0;line-height:1.65}
+.faq{display:grid;margin-top:12px}
+.faq details{border-top:1px solid var(--line);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:550;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--faint);font-family:var(--mono)}
+.faq details[open] summary::after{content:"−"}
+.faq summary:hover{color:var(--violet-2)}
+.faq details p{margin:8px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:72ch}
 
-.foot{color:var(--faint);font-size:12px;text-align:center;line-height:1.6;max-width:70ch;margin:6px auto 0}
-.skel{color:var(--faint)}
-@keyframes rise{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
-.rise{animation:rise .45s cubic-bezier(.2,.7,.2,1)}
+.foot{color:var(--faint);font-size:12px;text-align:center;line-height:1.7;max-width:74ch;margin:8px auto 0}
+.foot a{color:var(--muted)} .foot a:hover{color:var(--violet-2)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--surface-3);border:1px solid var(--line-2);border-radius:12px;padding:9px 14px;font-size:13px;transition:all .3s var(--ease);z-index:50;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
 
-@media (max-width:720px){
-  .hero{grid-template-columns:minmax(0,1fr);padding:20px}
-  .ring{width:auto;display:flex;align-items:center;gap:14px;text-align:left}
-  .ring svg{margin:0}
+@media (max-width:860px){
+  .primary{grid-template-columns:minmax(0,1fr);padding:20px;gap:20px;border-radius:24px}
   .grid{grid-template-columns:minmax(0,1fr)}
-  .tfs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .funnel{grid-template-columns:minmax(0,1fr)}
   .tg-form{grid-template-columns:minmax(0,1fr)}
-  .inline-inputs{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:560px){
+  .top{gap:10px}
+  .coins{order:3;width:100%}
+  .coins button{flex:1;justify-content:center;padding:7px 4px}
+  .tfs{width:100%} .tfs button{flex:1;justify-content:center}
+  .live{margin-left:0}
+  .beam-wrap{min-height:230px}
+  .bnode{width:38px;height:38px;border-radius:11px;font-size:10px}
+  .core{width:84px;height:84px;border-radius:24px}
+  .out{min-width:90px;padding:8px 9px} .out b{font-size:16px} .out span{font-size:10px}
+  .vkpi{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .drv li{grid-template-columns:minmax(0,1fr) 84px}
+  .p-foot .ctx-label{width:100%}
+  .p-foot .field{flex:1;min-width:0}
+  .field input{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
 <div class="app">
   <header class="top">
-    <div class="brand"><div class="mark" aria-hidden="true"></div><div><b>QUANTUM</b><small>Señales · Dédalo Multimedia</small></div></div>
-    <div class="coins" id="coins"></div>
-    <button class="icon-btn" id="refresh">Actualizar</button>
+    <div class="brand"><div class="mark" aria-hidden="true"></div><div><h1>QUANTUM</h1><span class="shiny" data-i="tagline">Quant signals · Dédalo Multimedia</span></div></div>
+    <nav class="seg coins" id="coins" aria-label="Coin"><span class="ind"></span></nav>
+    <div class="seg lang" id="lang" role="group" aria-label="Language"><span class="ind"></span><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
+    <button class="icon-btn" id="refresh" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span data-i="refresh">Refresh</span></button>
   </header>
 
-  <div class="note" id="simNote" hidden><b>Modo demostración.</b> Este visor bloquea datos externos, así que las señales salen de un mercado simulado. En tu hosting la página usa precios reales de Binance.</div>
+  <div class="note" id="simNote" hidden data-i="sim"></div>
 
-  <section class="hero" id="hero">
-    <div>
-      <div class="h-coin"><span id="hCoin">Cargando…</span><span class="px" id="hPx"></span><span id="hTime"></span></div>
-      <div class="verdict v-wait" id="hVerdict">—</div>
-      <div class="h-sub" id="hSub">Leyendo el mercado en 4 temporalidades…</div>
-      <div class="badges" id="hBadges"></div>
-    </div>
-    <div class="ring" id="ring"></div>
-  </section>
-
-  <div class="tfs" id="tfs"></div>
-
-  <div class="grid">
-    <section class="card">
-      <div class="c-t" id="planT">Plan de la operación</div>
-      <div class="c-s" id="planS"></div>
-      <div class="rows" id="plan"></div>
-      <div class="chart"><canvas id="cv"></canvas></div>
-    </section>
-
-    <section class="card">
-      <div class="c-t">Cuánto meter como máximo</div>
-      <div class="c-s">Para que un stop no te cueste más de lo que decides arriesgar</div>
-      <div class="big" id="sizeBig">—</div>
-      <div class="big-sub" id="sizeSub"></div>
-      <div class="rows" id="sizeRows"></div>
-      <div class="inline-inputs">
-        <label class="field" for="capital">Tu capital (USD)<input id="capital" type="number" min="10" step="10" inputmode="decimal"></label>
-        <label class="field" for="risk">Riesgo por trade %<input id="risk" type="number" min="0.1" max="10" step="0.1" inputmode="decimal"></label>
-        <label class="field" for="lev">Apalanc. máx.<input id="lev" type="number" min="1" max="20" step="1" inputmode="numeric"></label>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="c-t">Por qué</div>
-      <div class="c-s">Lo que el motor está viendo, en simple</div>
-      <ul class="why" id="why"></ul>
-    </section>
-
-    <section class="card">
-      <div class="c-t">Radar · dónde está la oportunidad</div>
-      <div class="c-s">Las 5 monedas en 4H · 1D · 1S · 1M, ordenadas por fuerza</div>
-      <div class="radar" id="radar"></div>
-    </section>
-
-    <section class="card span">
-      <div class="c-t">Alertas a tu Telegram</div>
-      <div class="c-s">Solo te escribe cuando una señal es fuerte: fuerza alta, buen acierto histórico y la temporalidad mayor no está en contra</div>
-      <ol class="tg-steps">
-        <li>En Telegram abre <b>@BotFather</b>, escribe <b>/newbot</b> y copia el <b>token</b>.</li>
-        <li>Mándale cualquier mensaje a tu bot. Luego abre <b>@userinfobot</b> para ver tu <b>chat ID</b>.</li>
-        <li>Pégalos aquí y prueba. Con la página abierta te avisa al momento; para avisos 24/7 sube el archivo PHP a tu hosting.</li>
-      </ol>
-      <div class="tg-form">
-        <label class="field" for="tgToken">Token del bot<input id="tgToken" type="password" autocomplete="off" placeholder="123456:ABC…"></label>
-        <label class="field" for="tgChat">Chat ID<input id="tgChat" type="text" autocomplete="off" placeholder="123456789"></label>
-        <button class="btn" id="tgTest">Enviar prueba</button>
-      </div>
-      <div class="status" id="tgStatus">Sin configurar.</div>
-    </section>
+  <main style="display:contents">
+  <div class="ctx">
+    <span class="ctx-label" data-i="tfLabel">Timeframe</span>
+    <div class="seg tfs" id="tfs" aria-label="Timeframe"><span class="ind"></span></div>
+    <span class="live" id="live"><i></i><span data-i="loading">Loading…</span></span>
   </div>
 
-  <p class="foot">El acierto histórico mide cuántas veces esta misma señal tocó el objetivo 1 antes que el stop en esta moneda y temporalidad. Es estadística del pasado, no una garantía. Usa siempre el stop.</p>
+  <section class="primary" id="primary" aria-live="polite">
+    <div>
+      <div class="eyebrow"><span id="pCoin">—</span><span class="px" id="pPx"></span></div>
+      <div class="verdict" id="pVerdict">—</div>
+      <p class="p-sub" id="pSub" data-i="reading">Scanning 20 markets with the pattern model…</p>
+      <div class="prob">
+        <div class="prob-top"><span class="prob-num" id="pProb">—</span><span class="prob-lbl" id="pProbL"></span></div>
+        <div class="pbar"><span id="pFill"></span><i id="pBE"></i><b id="pBEl"></b></div>
+      </div>
+      <div class="chips" id="pChips"></div>
+    </div>
+    <div class="ticket" id="ticket">
+      <div class="t-head"><span class="t-title" id="tTitle">Trade ticket</span><span class="pill" id="tSide"></span></div>
+      <div id="tRows"></div>
+      <div class="size">
+        <div class="size-lbl" data-i="maxSize">Max position</div>
+        <div class="size-big" id="sBig">—</div>
+        <div class="size-sub" id="sSub"></div>
+      </div>
+      <button class="btn-primary" id="copyPlan" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span data-i="copy">Copy plan</span></button>
+    </div>
+    <div class="p-foot">
+      <span class="ctx-label" data-i="account">Your account</span>
+      <label class="field" for="capital"><span data-i="capital">Capital (USD)</span><input id="capital" type="number" min="10" step="10" inputmode="decimal"></label>
+      <label class="field" for="risk"><span data-i="riskL">Max risk / trade %</span><input id="risk" type="number" min="0.1" max="10" step="0.1" inputmode="decimal"></label>
+      <label class="field" for="lev"><span data-i="levL">Max leverage</span><input id="lev" type="number" min="1" max="20" step="1" inputmode="numeric"></label>
+    </div>
+  </section>
+
+  <section class="panel spot span" id="engine">
+    <h2 class="h2" data-i="engineT">How the engine decided</h2>
+    <div class="sub" id="engineS"></div>
+    <div class="beam-wrap" id="beam">
+      <svg class="beam-svg" id="beamSvg" aria-hidden="true"></svg>
+      <div class="bcol" id="bLeft"></div>
+      <div class="bcol mid"><div class="bnode core" id="core"><div><b>QUANTUM</b><small id="coreS">kNN + logit</small></div></div></div>
+      <div class="bcol" id="bRight">
+        <div class="bnode out" data-o="rej"><b id="oRej">—</b><span data-i="oRej">Rejected</span></div>
+        <div class="bnode out pass" data-o="pass"><b id="oPass">—</b><span data-i="oPass">Signals</span></div>
+        <div class="bnode out strong" data-o="strong"><b id="oStrong">—</b><span data-i="oStrong">Strong → Telegram</span></div>
+      </div>
+    </div>
+    <ul class="funnel" id="funnel"></ul>
+  </section>
+
+  <div class="grid">
+    <section class="panel spot">
+      <h2 class="h2" data-i="heatT">Radar</h2>
+      <div class="sub" data-i="heatS">Best-side probability for every coin and timeframe. Tap a cell to open it.</div>
+      <div class="heat" id="heat"></div>
+    </section>
+
+    <section class="panel spot">
+      <h2 class="h2" data-i="whyT">What moved the decision</h2>
+      <div class="sub" data-i="whyS">Weight of each factor in the model right now</div>
+      <ul class="drv" id="drv"></ul>
+    </section>
+
+    <section class="panel spot">
+      <h2 class="h2" data-i="valT">Out-of-sample test</h2>
+      <div class="sub" data-i="valS">Trained on the first 70% of history, tested on the last 30% it never saw</div>
+      <div class="vkpi" id="vkpi"></div>
+      <div class="chart"><canvas id="cvVal" aria-hidden="true"></canvas></div>
+    </section>
+
+    <section class="panel spot">
+      <h2 class="h2" data-i="chartT">Price and levels</h2>
+      <div class="sub" id="chartS"></div>
+      <div class="chart" style="height:214px"><canvas id="cvPx" aria-hidden="true"></canvas></div>
+    </section>
+
+    <section class="panel spot span">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:start;flex-wrap:wrap">
+        <div><h2 class="h2" data-i="jT">Live track record</h2><div class="sub" data-i="jS">Every strong signal is logged and graded automatically when it hits target or stop</div></div>
+        <span class="jsrc" id="jSrc"></span>
+      </div>
+      <div class="jstats" id="jStats"></div>
+      <div class="tbl"><table id="jTbl"></table></div>
+    </section>
+
+    <details class="panel span" id="tg">
+      <summary><div><h2 class="h2" data-i="tgT">Telegram alerts</h2><div class="sub" data-i="tgS">Only strong signals reach your phone</div></div></summary>
+      <ol class="tg-steps">
+        <li data-i="tg1">In Telegram open <b>@BotFather</b>, type <b>/newbot</b> and copy the <b>token</b>.</li>
+        <li data-i="tg2">Send any message to your bot, then open <b>@userinfobot</b> to see your <b>chat ID</b>.</li>
+        <li data-i="tg3">Paste both here and test. With the page open you get alerts instantly; for 24/7 alerts install the PHP bot on your hosting.</li>
+      </ol>
+      <div class="tg-form">
+        <label class="field" for="tgToken"><span data-i="tokenL">Bot token</span><input id="tgToken" type="password" autocomplete="off" placeholder="123456:ABC…"></label>
+        <label class="field" for="tgChat"><span>Chat ID</span><input id="tgChat" type="text" autocomplete="off" placeholder="123456789"></label>
+        <button class="btn-sec" id="tgTest" type="button" data-i="test">Send test</button>
+      </div>
+      <div class="status" id="tgStatus"></div>
+    </details>
+
+    <section class="panel span about" id="about">
+      <h2 class="h2" data-i="aboutT">What is QUANTUM Signals?</h2>
+      <p id="aboutP" data-i="aboutP">QUANTUM Signals is a free quantitative crypto tool. It turns every candle of Bitcoin, Ethereum, Solana, XRP and Cardano into 11 measurable factors, finds the most similar moments in each market's history and estimates the probability that a trade reaches its target before its stop. It only says BUY or SELL when that probability beats break-even with margin and the model has proven itself on data it never saw.</p>
+      <div class="faq" id="faq"></div>
+    </section>
+  </div>
+  </main>
+
+  <noscript><p class="foot">QUANTUM Signals needs JavaScript to load live Binance prices and run the model.</p></noscript>
+  <footer class="foot"><span data-i="foot">Probabilities come from past data and do not guarantee future results. Always use the stop. Not financial advice.</span><br>
+    <a href="https://github.com/hidalgutzu/quantum-senales" rel="noopener">GitHub</a> · <a href="https://dedalomultimedia.com" rel="noopener">Dédalo Multimedia</a> · Cancún, México</footer>
 </div>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
 (()=>{'use strict';
-/* ═══ Configuración ═══ */
+/* ════════════════════════════════════════════════════════════
+   IDIOMAS (inglés primario)
+   ════════════════════════════════════════════════════════════ */
+const FN_EN=['Short-term trend','Price vs 50-candle average','Price vs 200-candle average','Momentum, 3 candles','Momentum, 10 candles','RSI','MACD impulse','Position in Bollinger band','Volatility vs normal','Position in 20-candle range','Volume vs normal'];
+const FN_ES=['Tendencia de corto plazo','Precio vs promedio de 50 velas','Precio vs promedio de 200 velas','Impulso, 3 velas','Impulso, 10 velas','RSI','Impulso MACD','Posición en banda de Bollinger','Volatilidad vs normal','Posición en rango de 20 velas','Volumen vs normal'];
+const I18N={
+en:{loc:'en-US',title:'QUANTUM Signals · Quant Crypto Signals with Telegram Alerts',
+  desc:'Free quant crypto signals for BTC, ETH, SOL, XRP and ADA on 4H, 1D, 1W and 1M. A pattern model estimates the probability of each trade, validated out-of-sample, with entry, stop, targets, position size and Telegram alerts.',
+  tagline:'Quant signals · Dédalo Multimedia',refresh:'Refresh',loading:'Loading…',reading:'Scanning 20 markets with the pattern model…',tfLabel:'Timeframe',
+  sim:'<b>Demo mode.</b> This viewer blocks external data, so the model runs on a simulated market. Hosted on your own site it uses live Binance prices.',
+  live:'Live · Binance',demo:'Demo data',analyzing:(i,n)=>`Analyzing ${i}/${n}`,
+  tf:{'4h':['4H','4 hours'],'1d':['1D','1 day'],'1w':['1W','1 week'],'1M':['1M','1 month']},
+  buy:'Buy',sell:'Sell',wait:'Wait',
+  sub:{s1:'<b>Buy setup with a measured edge.</b> <span>In similar past moments, price reached the target more often than the stop.</span>',
+       s_1:'<b>Sell (short) setup with a measured edge.</b> <span>In similar past moments, price fell to the target more often than it hit the stop.</span>',
+       st1:'<b>Strong buy.</b> <span>High probability, validated model, and the higher timeframe agrees.</span>',
+       st_1:'<b>Strong sell (short).</b> <span>High probability, validated model, and the higher timeframe agrees.</span>',
+       lowp:(d,p)=>`No edge right now. <span>The model leans ${d} at ${p}, below the 55% it requires.</span>`,
+       ev:(d,p)=>`No edge right now. <span>The ${d} side at ${p} has negative expected value.</span>`,
+       noval:d=>`Staying out. <span>On this coin and timeframe the model did not beat break-even on unseen data, so its ${d} lean is not trusted.</span>`,
+       late:d=>`Too late to enter. <span>There was a ${d} signal, but price already moved more than 0.75 ATR. Chasing ruins the odds.</span>`,
+       nohist:'Not enough history on this timeframe to train the model.'},
+  against:tf=>` <span style="color:var(--warn)">${tf} disagrees: size down.</span>`,
+  dBuy:'buy',dSell:'sell',
+  probL:d=>`chance a ${d} hits target 1 before the stop`,be:'break-even',
+  evChip:'Expected value',valOk:(h,n)=>`Validated · ${h} on ${n} unseen trades`,valNo:'Not validated',edge:'Edge vs random',strongChip:'Alert-worthy',
+  ticketT:'Trade ticket',refT:'Reference levels',long:'LONG',short:'SHORT',
+  zoneBuy:'Buy zone',zoneSell:'Sell zone',limit:'limit order',stop:'Stop',t1:'Target 1 · take half',t2:'Target 2 · rest',moveStop:'then stop to entry',
+  maxSize:'Max position',spot:p=>`Spot, no leverage · ${p}% of your capital.`,lev:(x,c)=>`Needs <b>${x}×</b> leverage${c?' (capped by your max)':''}.`,
+  riskLine:(r,k)=>`You risk <b>${r}</b> if the stop hits · Kelly suggests ${k}.`,noTrade:'Kelly is zero at this probability: no position.',
+  copy:'Copy plan',copied:'Plan copied',copyFail:'Select and copy the ticket manually',
+  account:'Your account',capital:'Capital (USD)',riskL:'Max risk / trade %',levL:'Max leverage',
+  engineT:'How the engine decided',engineS:n=>`Each refresh it scans ${n} markets, scores every one with the pattern model and rejects anything without a measurable edge.`,
+  oRej:'Rejected',oPass:'Signals',oStrong:'Strong → Telegram',
+  f:{scan:'Markets scanned',lowp:'Probability below 55%',ev:'Negative expected value',noval:'Failed the out-of-sample test',late:'Price already moved',nohist:'Not enough history',against:'Higher timeframe against',pass:'Actionable signals',strong:'Strong signals'},
+  heatT:'Radar',heatS:'Best-side probability for every coin and timeframe. Tap a cell to open it.',
+  whyT:'What moved the decision',whyS:'Weight of each factor in the model right now',fn:FN_EN,hi:'high',lo:'low',norm:'normal',supports:'supports',againstW:'against',noDrv:'Not enough data to explain this market.',
+  valT:'Out-of-sample test',valS:'Trained on the first 70% of history, tested on the last 30% it never saw',
+  vTrades:'Test trades',vHit:'Hit rate',vBE:'Break-even',vEV:'Avg result',vNone:'Too few test trades to judge this market.',
+  chartT:'Price and levels',chartS:tf=>`Last 90 candles · ${tf}`,entry:'Entry',
+  jT:'Live track record',jS:'Every strong signal is logged and graded automatically when it hits target or stop',
+  jServer:'Server bot · 24/7',jLocal:'This browser',jEmpty:'No strong signals logged yet. They appear here as soon as one fires.',
+  jWins:'Targets',jLoss:'Stops',jOpen:'Open',jHit:'Real hit rate',jCols:['Date','Market','Side','Entry','Prob.','Result'],
+  jSt:{open:'Open',win:'Target',loss:'Stop',exp:'Expired'},
+  tgT:'Telegram alerts',tgS:'Only strong signals reach your phone',
+  tg1:'In Telegram open <b>@BotFather</b>, type <b>/newbot</b> and copy the <b>token</b>.',
+  tg2:'Send any message to your bot, then open <b>@userinfobot</b> to see your <b>chat ID</b>.',
+  tg3:'Paste both here and test. With the page open you get alerts instantly; for 24/7 alerts install the PHP bot on your hosting.',
+  tokenL:'Bot token',test:'Send test',notSet:'Not set up.',setOk:'Set up. Send a test.',setLive:'Set up. Alerts arrive while this page is open.',
+  sending:'Sending…',sent:'Message sent. Check Telegram.',sentN:n=>`Sent ${n} new alerts to Telegram.`,blocked:'This viewer blocks Telegram. Test it from your hosted version.',fail:'Could not send: ',missing:'Missing token or chat ID',rejected:'Telegram rejected the message',
+  msg:{price:'Price',zone:'Zone',stop:'Stop',t1:'Target 1',t2:'Target 2',prob:'Probability',val:'Validated',ev:'Expected value',max:'Max size',risk:'risk',ok:'✅ <b>QUANTUM connected</b>'},
+  aboutT:'What is QUANTUM Signals?',
+  aboutP:'QUANTUM Signals is a free quantitative crypto tool. It turns every candle of Bitcoin, Ethereum, Solana, XRP and Cardano into 11 measurable factors, finds the most similar moments in each market\'s history and estimates the probability that a trade reaches its target before its stop. It only says BUY or SELL when that probability beats break-even with margin and the model has proven itself on data it never saw.',
+  faq:[
+   ['How does QUANTUM decide whether to buy or sell?','It turns every candle into 11 measurable factors (trend, momentum, RSI, MACD, Bollinger position, volatility, range position and volume). Two models then estimate the probability that price hits target 1 (2 ATR) before the stop (1.5 ATR): a k-nearest-neighbors search over the most similar past moments, and a logistic regression. Their average is the probability you see. It signals only above 55%, with positive expected value and a validated model.'],
+   ['What does "validated out-of-sample" mean?','The model is trained on the first 70% of each market\'s history and tested on the last 30%, data it never saw. If its hit rate there does not beat break-even (42.9% for this risk/reward) with margin, the tool stays on WAIT for that coin and timeframe.'],
+   ['Is this how Jim Simons traded?','It applies his public principles: no human opinion, many small statistical edges, strict testing on unseen data and disciplined sizing. Renaissance Technologies\' real models are secret and far more complex. QUANTUM is a transparent, simplified version you can audit.'],
+   ['How much should I put into a trade?','Your risk per trade is the smaller of your own limit and a quarter of the Kelly fraction implied by the probability. Position size is that risk divided by the distance to the stop, capped by your max leverage.'],
+   ['Why does it say WAIT so often?','Because most of the time there is no measurable edge. Like a quant fund, the engine rejects far more than it takes. The funnel shows every rejection and its reason.'],
+   ['Is it free? Is it financial advice?','It is free and open source on GitHub. It is an educational quantitative tool, not financial advice.']],
+  foot:'Probabilities come from past data and do not guarantee future results. Always use the stop. Not financial advice.'},
+es:{loc:'es-MX',title:'QUANTUM Señales · Señales cripto cuantitativas con alertas a Telegram',
+  desc:'Señales cripto cuantitativas gratuitas para BTC, ETH, SOL, XRP y ADA en 4H, 1D, 1S y 1M. Un modelo de patrones estima la probabilidad de cada operación, validado fuera de muestra, con entrada, stop, objetivos, tamaño de posición y alertas a Telegram.',
+  tagline:'Señales cuantitativas · Dédalo Multimedia',refresh:'Actualizar',loading:'Cargando…',reading:'Analizando 20 mercados con el modelo de patrones…',tfLabel:'Temporalidad',
+  sim:'<b>Modo demostración.</b> Este visor bloquea datos externos, así que el modelo corre sobre un mercado simulado. En tu hosting usa precios reales de Binance.',
+  live:'En vivo · Binance',demo:'Datos demo',analyzing:(i,n)=>`Analizando ${i}/${n}`,
+  tf:{'4h':['4H','4 horas'],'1d':['1D','1 día'],'1w':['1S','1 semana'],'1M':['1M','1 mes']},
+  buy:'Comprar',sell:'Vender',wait:'Esperar',
+  sub:{s1:'<b>Compra con ventaja medida.</b> <span>En momentos pasados parecidos, el precio llegó al objetivo más veces que al stop.</span>',
+       s_1:'<b>Venta (short) con ventaja medida.</b> <span>En momentos pasados parecidos, el precio cayó al objetivo más veces que al stop.</span>',
+       st1:'<b>Compra fuerte.</b> <span>Probabilidad alta, modelo validado y la temporalidad mayor está de acuerdo.</span>',
+       st_1:'<b>Venta fuerte (short).</b> <span>Probabilidad alta, modelo validado y la temporalidad mayor está de acuerdo.</span>',
+       lowp:(d,p)=>`Sin ventaja ahora. <span>El modelo se inclina a la ${d} con ${p}, por debajo del 55% que exige.</span>`,
+       ev:(d,p)=>`Sin ventaja ahora. <span>El lado de ${d} con ${p} tiene valor esperado negativo.</span>`,
+       noval:d=>`Fuera del mercado. <span>En esta moneda y temporalidad el modelo no superó el punto de equilibrio con datos nuevos, así que no se confía en su inclinación a la ${d}.</span>`,
+       late:d=>`Ya es tarde para entrar. <span>Hubo señal de ${d}, pero el precio ya se movió más de 0.75 ATR. Perseguirlo arruina las probabilidades.</span>`,
+       nohist:'No hay suficiente historia en esta temporalidad para entrenar el modelo.'},
+  against:tf=>` <span style="color:var(--warn)">${tf} va en contra: entra con menos.</span>`,
+  dBuy:'compra',dSell:'venta',
+  probL:d=>`probabilidad de que una ${d} llegue al objetivo 1 antes que al stop`,be:'equilibrio',
+  evChip:'Valor esperado',valOk:(h,n)=>`Validado · ${h} en ${n} trades nuevos`,valNo:'No validado',edge:'Ventaja vs azar',strongChip:'Merece alerta',
+  ticketT:'Ticket de operación',refT:'Niveles de referencia',long:'LONG',short:'SHORT',
+  zoneBuy:'Zona de compra',zoneSell:'Zona de venta',limit:'orden límite',stop:'Stop',t1:'Objetivo 1 · toma la mitad',t2:'Objetivo 2 · el resto',moveStop:'luego stop a tu entrada',
+  maxSize:'Máximo a meter',spot:p=>`Spot, sin apalancamiento · ${p}% de tu capital.`,lev:(x,c)=>`Requiere <b>${x}×</b> de apalancamiento${c?' (limitado por tu máximo)':''}.`,
+  riskLine:(r,k)=>`Arriesgas <b>${r}</b> si toca el stop · Kelly sugiere ${k}.`,noTrade:'Con esta probabilidad Kelly da cero: sin posición.',
+  copy:'Copiar plan',copied:'Plan copiado',copyFail:'Selecciona y copia el ticket a mano',
+  account:'Tu cuenta',capital:'Capital (USD)',riskL:'Riesgo máx. / trade %',levL:'Apalanc. máx.',
+  engineT:'Cómo decidió el motor',engineS:n=>`En cada actualización revisa ${n} mercados, califica cada uno con el modelo de patrones y descarta todo lo que no tenga una ventaja medible.`,
+  oRej:'Rechazadas',oPass:'Señales',oStrong:'Fuertes → Telegram',
+  f:{scan:'Mercados revisados',lowp:'Probabilidad menor a 55%',ev:'Valor esperado negativo',noval:'No pasó la prueba fuera de muestra',late:'El precio ya se movió',nohist:'Historia insuficiente',against:'Temporalidad mayor en contra',pass:'Señales operables',strong:'Señales fuertes'},
+  heatT:'Radar',heatS:'Probabilidad del mejor lado en cada moneda y temporalidad. Toca una celda para abrirla.',
+  whyT:'Qué movió la decisión',whyS:'Peso de cada factor en el modelo en este momento',fn:FN_ES,hi:'alto',lo:'bajo',norm:'normal',supports:'a favor',againstW:'en contra',noDrv:'No hay datos suficientes para explicar este mercado.',
+  valT:'Prueba fuera de muestra',valS:'Entrenado con el primer 70% de la historia, probado en el último 30% que nunca vio',
+  vTrades:'Trades de prueba',vHit:'Acierto',vBE:'Equilibrio',vEV:'Resultado medio',vNone:'Muy pocos trades de prueba para juzgar este mercado.',
+  chartT:'Precio y niveles',chartS:tf=>`Últimas 90 velas · ${tf}`,entry:'Entrada',
+  jT:'Historial real',jS:'Cada señal fuerte se registra y se califica sola cuando toca objetivo o stop',
+  jServer:'Robot del servidor · 24/7',jLocal:'Este navegador',jEmpty:'Aún no hay señales fuertes registradas. Aparecen aquí en cuanto salga una.',
+  jWins:'Objetivos',jLoss:'Stops',jOpen:'Abiertas',jHit:'Acierto real',jCols:['Fecha','Mercado','Lado','Entrada','Prob.','Resultado'],
+  jSt:{open:'Abierta',win:'Objetivo',loss:'Stop',exp:'Expirada'},
+  tgT:'Alertas a Telegram',tgS:'Solo las señales fuertes llegan a tu teléfono',
+  tg1:'En Telegram abre <b>@BotFather</b>, escribe <b>/newbot</b> y copia el <b>token</b>.',
+  tg2:'Mándale cualquier mensaje a tu bot. Luego abre <b>@userinfobot</b> para ver tu <b>chat ID</b>.',
+  tg3:'Pégalos aquí y prueba. Con la página abierta te avisa al momento; para avisos 24/7 instala el robot PHP en tu hosting.',
+  tokenL:'Token del bot',test:'Enviar prueba',notSet:'Sin configurar.',setOk:'Configurado. Prueba el envío.',setLive:'Configurado. Te aviso mientras esta página esté abierta.',
+  sending:'Enviando…',sent:'Mensaje enviado. Revisa Telegram.',sentN:n=>`Enviadas ${n} alertas nuevas a Telegram.`,blocked:'Este visor bloquea Telegram. Pruébalo desde tu hosting.',fail:'No se pudo enviar: ',missing:'Falta token o chat ID',rejected:'Telegram rechazó el mensaje',
+  msg:{price:'Precio',zone:'Zona',stop:'Stop',t1:'Objetivo 1',t2:'Objetivo 2',prob:'Probabilidad',val:'Validado',ev:'Valor esperado',max:'Máximo a meter',risk:'riesgo',ok:'✅ <b>QUANTUM conectado</b>'},
+  aboutT:'¿Qué es QUANTUM Señales?',
+  aboutP:'QUANTUM Señales es una herramienta cripto cuantitativa y gratuita. Convierte cada vela de Bitcoin, Ethereum, Solana, XRP y Cardano en 11 factores medibles, busca los momentos más parecidos en la historia de cada mercado y estima la probabilidad de que una operación llegue a su objetivo antes que a su stop. Solo dice COMPRAR o VENDER cuando esa probabilidad supera el punto de equilibrio con margen y el modelo ya demostró funcionar con datos que nunca vio.',
+  faq:[
+   ['¿Cómo decide QUANTUM si comprar o vender?','Convierte cada vela en 11 factores medibles (tendencia, impulso, RSI, MACD, posición en Bollinger, volatilidad, posición en el rango y volumen). Dos modelos estiman la probabilidad de que el precio toque el objetivo 1 (2 ATR) antes que el stop (1.5 ATR): una búsqueda de vecinos más cercanos sobre los momentos pasados más parecidos y una regresión logística. Su promedio es la probabilidad que ves. Solo da señal arriba de 55%, con valor esperado positivo y modelo validado.'],
+   ['¿Qué significa "validado fuera de muestra"?','El modelo se entrena con el primer 70% de la historia de cada mercado y se prueba en el último 30%, que nunca vio. Si ahí no supera el punto de equilibrio (42.9% para este riesgo/beneficio) con margen, la herramienta se queda en ESPERAR para esa moneda y temporalidad.'],
+   ['¿Así operaba Jim Simons?','Aplica sus principios públicos: cero opinión humana, muchas ventajas estadísticas pequeñas, pruebas estrictas con datos no vistos y tamaño disciplinado. Los modelos reales de Renaissance Technologies son secretos y mucho más complejos. QUANTUM es una versión transparente y simplificada que puedes auditar.'],
+   ['¿Cuánto debo meter en un trade?','Tu riesgo por trade es el menor entre tu propio límite y un cuarto de la fracción de Kelly que implica la probabilidad. El tamaño es ese riesgo dividido entre la distancia al stop, limitado por tu apalancamiento máximo.'],
+   ['¿Por qué dice ESPERAR tan seguido?','Porque casi siempre no hay ventaja medible. Como un fondo cuantitativo, el motor rechaza mucho más de lo que toma. El embudo muestra cada rechazo y su motivo.'],
+   ['¿Es gratis? ¿Es asesoría financiera?','Es gratis y de código abierto en GitHub. Es una herramienta cuantitativa educativa, no asesoría financiera.']],
+  foot:'Las probabilidades vienen de datos pasados y no garantizan resultados futuros. Usa siempre el stop. No es asesoría financiera.'}
+};
+
+/* ════════════════════════════════════════════════════════════
+   CONFIGURACIÓN DEL MODELO
+   ════════════════════════════════════════════════════════════ */
 const COINS={BTC:'Bitcoin',ETH:'Ethereum',SOL:'Solana',XRP:'XRP',ADA:'Cardano'};
-const TFS=[['4h','4H','4 horas'],['1d','1D','1 día'],['1w','1S','1 semana'],['1M','1M','1 mes']];
-const TFL=Object.fromEntries(TFS.map(t=>[t[0],t]));
+const TFK=['4h','1d','1w','1M'];
+const TF_MS={'4h':144e5,'1d':864e5,'1w':6048e5,'1M':2592e6};
 const HIGHER={'4h':'1d','1d':'1w','1w':'1M'};
-const SL_ATR=1.5, TP1_ATR=2, TP2_ATR=3.5, LOOKAHEAD=30;          // stop y objetivos en múltiplos de ATR
-const STRONG={score:60, win:.55, n:8};                             // criterio de alerta
+const M={look:30,sl:1.5,tp:2,tp2:3.5,k:25,alpha:4,thr:.55,strong:.60,late:.75,split:.7,iters:120,lr:.5,lambda:.01,minVal:8,margin:.03};
+const B=M.tp/M.sl;            // pago por unidad de riesgo: 1.333R
+const BE=1/(1+B);             // probabilidad de equilibrio: 42.9%
+
 const $=s=>document.querySelector(s);
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const ok=Number.isFinite;
-const store={get(k,d){try{const v=localStorage.getItem('q_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('q_'+k,JSON.stringify(v))}catch(e){}}};
+const tick=()=>new Promise(r=>setTimeout(r,0));
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store={get(k,d){try{const v=localStorage.getItem('q2_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('q2_'+k,JSON.stringify(v))}catch(e){}}};
 const cfg=Object.assign({capital:1000,risk:1,lev:3,token:'',chat:''},store.get('cfg',{}));
-const ST={coin:store.get('coin','XRP'),tf:store.get('tf','1d'),live:null,res:{},time:null};
+const urlLang=new URLSearchParams(location.search).get('lang');
+const ST={coin:store.get('coin','XRP'),tf:store.get('tf','1d'),lang:(urlLang==='es'||urlLang==='en')?urlLang:store.get('lang','en'),live:null,res:{},time:null,busy:false,server:null};
+let T=I18N[ST.lang];
+const tfS=k=>T.tf[k][0];
 
-/* ═══ Indicadores ═══ */
+/* ════════════════════════════════════════════════════════════
+   INDICADORES BASE
+   ════════════════════════════════════════════════════════════ */
 function ema(a,p){const o=new Array(a.length).fill(NaN);if(a.length<p)return o;let s=0;for(let i=0;i<p;i++)s+=a[i];let e=s/p;o[p-1]=e;const k=2/(p+1);for(let i=p;i<a.length;i++){e=a[i]*k+e*(1-k);o[i]=e}return o}
 function rsi(c,p=14){const o=new Array(c.length).fill(NaN);if(c.length<=p)return o;let g=0,l=0;for(let i=1;i<=p;i++){const d=c[i]-c[i-1];if(d>0)g+=d;else l-=d}g/=p;l/=p;o[p]=l?100-100/(1+g/l):100;for(let i=p+1;i<c.length;i++){const d=c[i]-c[i-1];g=(g*(p-1)+Math.max(d,0))/p;l=(l*(p-1)+Math.max(-d,0))/p;o[i]=l?100-100/(1+g/l):100}return o}
 function macdH(c){const f=ema(c,12),s=ema(c,26),m=c.map((_,i)=>f[i]-s[i]),st=m.findIndex(ok),o=new Array(c.length).fill(NaN);if(st<0)return o;const sg=ema(m.slice(st),9);for(let i=st;i<c.length;i++)o[i]=m[i]-sg[i-st];return o}
 function atr(h,l,c,p=14){const o=new Array(c.length).fill(NaN);if(c.length<=p)return o;let s=0;for(let i=1;i<=p;i++)s+=Math.max(h[i]-l[i],Math.abs(h[i]-c[i-1]),Math.abs(l[i]-c[i-1]));let a=s/p;o[p]=a;for(let i=p+1;i<c.length;i++){a=(a*(p-1)+Math.max(h[i]-l[i],Math.abs(h[i]-c[i-1]),Math.abs(l[i]-c[i-1])))/p;o[i]=a}return o}
 
-/* ═══ Motor de señal: puntaje −100…+100 ═══
-   Tendencia corta (EMA20 vs EMA50) ±30 · precio vs EMA50 ±15 · tendencia mayor (EMA200) ±15
-   impulso MACD ±15 · aceleración ±10 · RSI: extremos ±15, zona media proporcional ±10 */
-function score(I,c,i){
-  const {e20,e50,e200,r,h}=I;
-  if(i<1||![e20[i],e50[i],r[i],h[i],h[i-1],I.a[i]].every(ok))return null;
-  let s=0;const why=[];
-  if(e20[i]>e50[i]){s+=30;why.push([1,'La tendencia de corto plazo es alcista: el promedio rápido va por encima del lento.'])}
-  else{s-=30;why.push([-1,'La tendencia de corto plazo es bajista: el promedio rápido va por debajo del lento.'])}
-  if(c[i]>e50[i]){s+=15;why.push([1,'El precio está por encima de su promedio de 50 velas.'])}
-  else{s-=15;why.push([-1,'El precio está por debajo de su promedio de 50 velas.'])}
-  let k=1;
-  if(ok(e200[i])){if(c[i]>e200[i]){s+=15;why.push([1,'La tendencia de fondo (200 velas) es alcista.'])}else{s-=15;why.push([-1,'La tendencia de fondo (200 velas) es bajista.'])}}
-  else k=100/85;
-  if(h[i]>0){s+=15}else{s-=15}
-  const acc=h[i]>h[i-1];s+=acc?10:-10;
-  why.push([h[i]>0?1:-1,(h[i]>0?'Los compradores tienen el impulso':'Los vendedores tienen el impulso')+(acc===(h[i]>0)?' y está creciendo.':', pero se está debilitando.')]);
-  const rv=r[i];
-  if(rv<30){s+=15;why.push([1,`Sobreventa (RSI ${rv.toFixed(0)}): el precio cayó demasiado rápido y suele rebotar.`])}
-  else if(rv>70){s-=15;why.push([-1,`Sobrecompra (RSI ${rv.toFixed(0)}): subió demasiado rápido y suele corregir.`])}
-  else{s+=clamp((rv-50)/2,-10,10);why.push([0,`Fuerza relativa neutral (RSI ${rv.toFixed(0)}).`])}
-  return {s:Math.round(clamp(s*k,-100,100)),why};
-}
-const sigOf=s=>s>=50?1:s<=-50?-1:0;
-
-/* Acierto histórico: cada vez que apareció una señal nueva, ¿tocó el objetivo 1 antes que el stop? (entrada a la apertura siguiente) */
-function history(D,I){
-  const n=D.c.length,res={'1':{w:0,n:0},'-1':{w:0,n:0}};let prev=0;
-  for(let i=30;i<n-2;i++){
-    const sc=score(I,D.c,i),sg=sc?sigOf(sc.s):0;
-    if(sg&&sg!==prev){
-      const e=D.o[i+1],A=I.a[i],sl=e-sg*SL_ATR*A,tp=e+sg*TP1_ATR*A;let out=null;
-      for(let k=i+1;k<Math.min(n-1,i+1+LOOKAHEAD);k++){
-        const hs=sg>0?D.l[k]<=sl:D.h[k]>=sl, ht=sg>0?D.h[k]>=tp:D.l[k]<=tp;
-        if(hs){out=0;break} if(ht){out=1;break}
-      }
-      if(out!==null){res[sg].n++;res[sg].w+=out}
-    }
-    prev=sg;
+/* ════════════════════════════════════════════════════════════
+   MOTOR CUANTITATIVO
+   1) 11 factores adimensionales por vela (divididos entre ATR o normalizados)
+   2) Etiqueta: ¿la entrada en la apertura siguiente tocó objetivo (2 ATR) antes que stop (1.5 ATR) en 30 velas?
+   3) Modelo A: k vecinos más cercanos en espacio z-score → p = (aciertos + α·base)/(k + α)
+      Modelo B: regresión logística con regularización L2 → p = σ(w·z + b)
+      Probabilidad final = promedio de ambos
+   4) Validación walk-forward: entrena en el 70% inicial (purgando 30 velas antes del corte), prueba en el 30% final
+   5) Señal solo si p ≥ 55%, valor esperado p·B − (1−p) > 0, modelo validado y el precio no se alejó > 0.75 ATR
+   ════════════════════════════════════════════════════════════ */
+function buildFeatures(D){
+  const {c,h,l,v}=D,n=c.length;
+  const e20=ema(c,20),e50=ema(c,50),e200=ema(c,200),r=rsi(c),mh=macdH(c),a=atr(h,l,c);
+  const X=new Array(n).fill(null);
+  for(let i=60;i<n;i++){
+    const A=a[i];if(!ok(A)||A<=0||!ok(e50[i])||!ok(mh[i])||!ok(r[i]))continue;
+    let s=0,q=0,hi=-Infinity,lo=Infinity,vs=0,vq=0;
+    for(let k=i-19;k<=i;k++){s+=c[k];q+=c[k]*c[k];if(h[k]>hi)hi=h[k];if(l[k]<lo)lo=l[k];vs+=v[k];vq+=v[k]*v[k]}
+    const m=s/20,sd=Math.sqrt(Math.max(q/20-m*m,1e-18)),vm=vs/20,vsd=Math.sqrt(Math.max(vq/20-vm*vm,1e-18));
+    let am=0,ac=0;for(let k=Math.max(0,i-99);k<=i;k++)if(ok(a[k])){am+=a[k];ac++}am/=ac;
+    X[i]=[(e20[i]-e50[i])/A,(c[i]-e50[i])/A,ok(e200[i])?(c[i]-e200[i])/A:0,(c[i]-c[i-3])/A,(c[i]-c[i-10])/A,(r[i]-50)/50,mh[i]/A,(c[i]-m)/(2*sd),A/am-1,hi>lo?(c[i]-lo)/(hi-lo)-.5:0,vsd>0?clamp((v[i]-vm)/vsd,-3,3):0];
   }
-  return res;
+  return {X,a};
 }
-
+function buildLabels(D,a){
+  const n=D.c.length,U=new Array(n).fill(null),Dn=new Array(n).fill(null);
+  for(let i=0;i<n-2;i++){
+    const A=a[i];if(!ok(A))continue;
+    const e=D.o[i+1],end=Math.min(n-2,i+M.look),su=e-M.sl*A,tu=e+M.tp*A,sd=e+M.sl*A,td=e-M.tp*A;
+    let ru=null,rd=null;
+    for(let k=i+1;k<=end;k++){
+      if(ru===null){if(D.l[k]<=su)ru=0;else if(D.h[k]>=tu)ru=1}
+      if(rd===null){if(D.h[k]>=sd)rd=0;else if(D.l[k]<=td)rd=1}
+      if(ru!==null&&rd!==null)break;
+    }
+    if(end-i>=M.look){if(ru===null)ru=0;if(rd===null)rd=0}   // sin tocar objetivo en 30 velas = no acierto
+    U[i]=ru;Dn[i]=rd;
+  }
+  return {U,D:Dn};
+}
+function zStats(X,idx){const d=X[idx[0]].length,m=new Float64Array(d),s=new Float64Array(d);for(const i of idx)for(let j=0;j<d;j++)m[j]+=X[i][j];for(let j=0;j<d;j++)m[j]/=idx.length;for(const i of idx)for(let j=0;j<d;j++)s[j]+=(X[i][j]-m[j])**2;for(let j=0;j<d;j++)s[j]=Math.sqrt(s[j]/idx.length)||1;return{m,s}}
+const zOf=(x,st)=>x.map((v,j)=>clamp((v-st.m[j])/st.s[j],-4,4));
+function fitLogit(Z,y){
+  const n=Z.length,d=Z[0].length,w=new Float64Array(d+1),g=new Float64Array(d+1);
+  for(let it=0;it<M.iters;it++){
+    g.fill(0);
+    for(let i=0;i<n;i++){const z=Z[i];let t=w[d];for(let j=0;j<d;j++)t+=w[j]*z[j];const e=1/(1+Math.exp(-t))-y[i];for(let j=0;j<d;j++)g[j]+=e*z[j];g[d]+=e}
+    for(let j=0;j<d;j++)w[j]-=M.lr*(g[j]/n+M.lambda*w[j]);w[d]-=M.lr*g[d]/n;
+  }
+  return w;
+}
+const logit=(w,z)=>{let t=w[z.length];for(let j=0;j<z.length;j++)t+=w[j]*z[j];return 1/(1+Math.exp(-t))};
+function fitModel(X,L,idx){
+  const st=zStats(X,idx),Z=idx.map(i=>zOf(X[i],st)),yU=idx.map(i=>L.U[i]),yD=idx.map(i=>L.D[i]);
+  const iu=[],id=[];yU.forEach((y,k)=>{if(y!==null)iu.push(k)});yD.forEach((y,k)=>{if(y!==null)id.push(k)});
+  const bu=iu.length?iu.reduce((s,k)=>s+yU[k],0)/iu.length:BE,bd=id.length?id.reduce((s,k)=>s+yD[k],0)/id.length:BE;
+  const wU=iu.length>=30?fitLogit(iu.map(k=>Z[k]),iu.map(k=>yU[k])):null,wD=id.length>=30?fitLogit(id.map(k=>Z[k]),id.map(k=>yD[k])):null;
+  return {st,Z,yU,yD,bu,bd,wU,wD};
+}
+function predict(md,x){
+  const z=zOf(x,md.st),n=md.Z.length,dist=new Float64Array(n),ord=new Uint32Array(n);
+  for(let i=0;i<n;i++){const a=md.Z[i];let s=0;for(let j=0;j<z.length;j++){const q=a[j]-z[j];s+=q*q}dist[i]=s;ord[i]=i}
+  ord.sort((a,b)=>dist[a]-dist[b]);
+  let wu=0,cu=0,wd=0,cd=0;
+  for(let t=0;t<n&&(cu<M.k||cd<M.k);t++){const i=ord[t];if(cu<M.k&&md.yU[i]!==null){wu+=md.yU[i];cu++}if(cd<M.k&&md.yD[i]!==null){wd+=md.yD[i];cd++}}
+  const ku=(wu+M.alpha*md.bu)/(cu+M.alpha),kd=(wd+M.alpha*md.bd)/(cd+M.alpha);
+  const lu=md.wU?logit(md.wU,z):md.bu,ld=md.wD?logit(md.wD,z):md.bd;
+  return {pu:(ku+lu)/2,pd:(kd+ld)/2,z};
+}
+function validate(X,L,n){
+  const idx=[];for(let i=0;i<n-2;i++)if(X[i]&&L.U[i]!==null&&L.D[i]!==null)idx.push(i);
+  const empty={n:0,w:0,hit:NaN,ev:NaN,curve:[0]};
+  if(idx.length<100)return empty;
+  const cut=idx[Math.floor(idx.length*M.split)],tr=idx.filter(i=>i<cut-M.look),te=idx.filter(i=>i>=cut);
+  if(tr.length<60||te.length<10)return empty;
+  const md=fitModel(X,L,tr);let t=0,w=0,R=0,last=-1e9;const curve=[0];
+  for(const i of te){
+    if(i<last+3)continue;
+    const p=predict(md,X[i]),up=p.pu>=p.pd,pp=up?p.pu:p.pd,y=up?L.U[i]:L.D[i];
+    if(pp<M.thr||pp*B-(1-pp)<=0)continue;
+    t++;w+=y;R+=y?B:-1;curve.push(R);last=i;
+  }
+  return {n:t,w,hit:t?w/t:NaN,ev:t?R/t:NaN,curve};
+}
 function analyze(D){
-  const c=D.c,I={e20:ema(c,20),e50:ema(c,50),e200:ema(c,200),r:rsi(c),h:macdH(c),a:atr(D.h,D.l,c)};
-  const i=c.length-2;                         // última vela CERRADA: la señal no cambia a media vela
-  const sc=score(I,c,i);if(!sc)return null;
-  const sg=sigOf(sc.s),dir=sg||(sc.s>=0?1:-1),A=I.a[i],px=c[c.length-1];
-  const H=history(D,I),hh=H[dir];
-  return {sg,dir,s:sc.s,why:sc.why,px,A,barT:D.t[i],
-    zoneA:px-dir*.5*A, zoneB:px, sl:px-dir*SL_ATR*A, tp1:px+dir*TP1_ATR*A, tp2:px+dir*TP2_ATR*A,
-    win:hh.n?hh.w/hh.n:NaN, n:hh.n, closes:c.slice(-90)};
+  const n=D.c.length,q=n-2;
+  const {X,a}=buildFeatures(D);if(!X[q])return {nohist:true,px:D.c[n-1],closes:D.c.slice(-90)};
+  const L=buildLabels(D,a),V=validate(X,L,n);
+  const tr=[];for(let i=0;i<q;i++)if(X[i]&&(L.U[i]!==null||L.D[i]!==null))tr.push(i);
+  if(tr.length<60)return {nohist:true,px:D.c[n-1],closes:D.c.slice(-90)};
+  const md=fitModel(X,L,tr),P=predict(md,X[q]);
+  const side=P.pu>=P.pd?1:-1,p=side>0?P.pu:P.pd,ev=p*B-(1-p),A=a[q],px=D.c[n-1];
+  const validated=V.n>=M.minVal&&V.hit>BE+M.margin,late=side*(px-D.c[q])>M.late*A;
+  const reason=p<M.thr?'lowp':ev<=0?'ev':!validated?'noval':late?'late':null;
+  const w=side>0?md.wU:md.wD;
+  const drivers=w?P.z.map((z,j)=>({j,z,c:w[j]*z})).sort((x,y)=>Math.abs(y.c)-Math.abs(x.c)).slice(0,6):[];
+  return {sg:reason?0:side,side,p,pu:P.pu,pd:P.pd,ev,reason,validated,V,A,px,barT:D.t[q],base:side>0?md.bu:md.bd,drivers,
+    zoneA:px-side*.5*A,sl:px-side*M.sl*A,tp1:px+side*M.tp*A,tp2:px+side*M.tp2*A,closes:D.c.slice(-90),D};
 }
-function isStrong(r,up){
-  if(!r||!r.sg||Math.abs(r.s)<STRONG.score||r.n<STRONG.n||!(r.win>=STRONG.win))return false;
-  return !(up&&up.sg===-r.sg);                // la temporalidad mayor no puede estar en contra
+function context(r,up){
+  if(!r||r.nohist||!r.sg)return {strong:false,against:false};
+  const against=!!(up&&!up.nohist&&up.side===-r.side&&up.p>=M.thr);
+  return {strong:r.p>=M.strong&&!against,against};
 }
 
-/* ═══ Datos ═══ */
+/* ════════════════════════════════════════════════════════════
+   DATOS
+   ════════════════════════════════════════════════════════════ */
 const HOSTS=['https://api.binance.com','https://data-api.binance.vision'];
-async function getJ(u){const ac=new AbortController(),t=setTimeout(()=>ac.abort(),8000);try{const r=await fetch(u,{signal:ac.signal});if(!r.ok)throw 0;return await r.json()}finally{clearTimeout(t)}}
-async function klines(sym,tf){for(const h of HOSTS){try{const j=await getJ(`${h}/api/v3/klines?symbol=${sym}USDT&interval=${tf}&limit=1000`);if(Array.isArray(j)&&j.length>40)return toD(j.map(k=>[+k[0],+k[1],+k[2],+k[3],+k[4]]))}catch(e){}}throw new Error('sin datos')}
-function toD(rows){return{t:rows.map(r=>r[0]),o:rows.map(r=>r[1]),h:rows.map(r=>r[2]),l:rows.map(r=>r[3]),c:rows.map(r=>r[4])}}
+async function getJ(u,ms=9000){const ac=new AbortController(),t=setTimeout(()=>ac.abort(),ms);try{const r=await fetch(u,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw 0;return await r.json()}finally{clearTimeout(t)}}
+async function klines(sym,tf){for(const h of HOSTS){try{const j=await getJ(`${h}/api/v3/klines?symbol=${sym}USDT&interval=${tf}&limit=1000`);if(Array.isArray(j)&&j.length>40)return toD(j.map(k=>[+k[0],+k[1],+k[2],+k[3],+k[4],+k[5]]))}catch(e){}}throw new Error('no data')}
+function toD(rows){return{t:rows.map(r=>r[0]),o:rows.map(r=>r[1]),h:rows.map(r=>r[2]),l:rows.map(r=>r[3]),c:rows.map(r=>r[4]),v:rows.map(r=>r[5])}}
 function mulberry(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function simulate(sym,tf){       // mercado sintético con tendencias y rangos (solo demostración)
-  const P0={BTC:64000,ETH:3100,SOL:145,XRP:2.4,ADA:.7}[sym],dt={'4h':1/2190,'1d':1/365,'1w':1/52,'1M':1/12}[tf],ms={'4h':144e5,'1d':864e5,'1w':6048e5,'1M':2592e6}[tf];
-  const bars={'4h':1000,'1d':1000,'1w':400,'1M':90}[tf],r=mulberry(sym.charCodeAt(0)*97+tf.length*13+tf.charCodeAt(1)),sg=.8*Math.sqrt(dt);
-  const rn=()=>{let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)};
-  let p=P0,mu=0,left=0;const rows=[],now=Date.now();
-  for(let i=0;i<bars;i++){if(--left<=0){mu=[2,-1.6,0][Math.floor(r()*3)]*dt;left=20+Math.floor(r()*70)}
-    const o=p;p=p*Math.exp(mu-.5*sg*sg+sg*rn());rows.push([now-(bars-i)*ms,o,Math.max(o,p)*(1+Math.abs(rn())*sg*.4),Math.min(o,p)*(1-Math.abs(rn())*sg*.4),p])}
+function simulate(sym,tf){       // mercado sintético con regímenes, solo para demostración
+  const P0={BTC:64000,ETH:3100,SOL:145,XRP:2.4,ADA:.7}[sym],dt={'4h':1/2190,'1d':1/365,'1w':1/52,'1M':1/12}[tf];
+  const bars={'4h':1000,'1d':1000,'1w':420,'1M':100}[tf],r=mulberry(sym.charCodeAt(0)*97+sym.charCodeAt(1)*7+tf.charCodeAt(1)*13),sg=.8*Math.sqrt(dt);
+  const rn=()=>{let u=0,w=0;while(!u)u=r();while(!w)w=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*w)};
+  let p=P0,mu=0,left=0,mom=0;const rows=[],now=Date.now();
+  for(let i=0;i<bars;i++){if(--left<=0){mu=[2.4,-2,0][Math.floor(r()*3)]*dt;left=25+Math.floor(r()*80)}
+    const e=sg*rn();mom=.15*mom+e;const o=p;p=p*Math.exp(mu-.5*sg*sg+e+.08*mom);
+    rows.push([now-(bars-i)*TF_MS[tf],o,Math.max(o,p)*(1+Math.abs(rn())*sg*.4),Math.min(o,p)*(1-Math.abs(rn())*sg*.4),p,1e6*(1+Math.abs(e)/sg*.6+r()*.4)])}
   return toD(rows);
 }
 async function loadAll(){
-  const jobs=[];for(const s in COINS)for(const [tf] of TFS)jobs.push([s,tf]);
+  ST.busy=true;setBusy(true);
+  const jobs=[];for(const s in COINS)for(const tf of TFK)jobs.push([s,tf]);
   let live=true,data;
   try{data=await Promise.all(jobs.map(([s,tf])=>klines(s,tf)))}catch(e){live=false;data=jobs.map(([s,tf])=>simulate(s,tf))}
-  const res={};jobs.forEach(([s,tf],k)=>{(res[s]=res[s]||{})[tf]=analyze(data[k])});
+  const res={};
+  for(let k=0;k<jobs.length;k++){const [s,tf]=jobs[k];(res[s]=res[s]||{})[tf]=analyze(data[k]);$('#coreS').textContent=T.analyzing(k+1,jobs.length);await tick()}
   ST.res=res;ST.live=live;ST.time=new Date();
+  if(live){try{const j=await getJ('quantum-journal.json',4000);ST.server=Array.isArray(j)?j:null}catch(e){ST.server=null}}
+  ST.busy=false;setBusy(false);
 }
+function setBusy(b){$('#core').classList.toggle('busy',b);$('#refresh').classList.toggle('spin',b);if(!b)$('#coreS').textContent='kNN + logit'}
 
-/* ═══ Formato ═══ */
-function fp(v){if(!ok(v))return'—';const a=Math.abs(v),d=a>=1000?0:a>=100?1:a>=10?2:4;return'$'+v.toLocaleString('es-MX',{minimumFractionDigits:d,maximumFractionDigits:d})}
-const fm=v=>ok(v)?'$'+Math.round(v).toLocaleString('es-MX'):'—';
-const pc=(v,d=1)=>ok(v)?(v>0?'+':v<0?'−':'')+Math.abs(v*100).toFixed(d)+'%':'—';
-/* Si la señal históricamente falla más de lo que acierta, el motor dice Esperar */
-const weak=r=>r&&r.sg&&r.n>=STRONG.n&&r.win<.5;
-const eff=r=>!r||weak(r)?0:r.sg;
-const word=r=>!r?'Sin datos':eff(r)>0?'Comprar':eff(r)<0?'Vender':'Esperar';
-const cls=r=>eff(r)>0?'v-buy':eff(r)<0?'v-sell':'v-wait';
-const col=r=>eff(r)>0?'var(--buy)':eff(r)<0?'var(--sell)':'var(--wait)';
-
-/* ═══ Tamaño de posición ═══
-   Riesgo $ = capital × riesgo% · distancia al stop % = |entrada − stop| / entrada
-   Máximo a meter = Riesgo $ / distancia % (tope: capital × apalancamiento máx.) */
+/* ════════════════════════════════════════════════════════════
+   FORMATO Y TAMAÑO
+   ════════════════════════════════════════════════════════════ */
+function fp(v){if(!ok(v))return'—';const a=Math.abs(v),d=a>=1000?0:a>=100?1:a>=10?2:4;return'$'+v.toLocaleString(T.loc,{minimumFractionDigits:d,maximumFractionDigits:d})}
+const fm=v=>ok(v)?'$'+Math.round(v).toLocaleString(T.loc):'—';
+const pc=v=>ok(v)?(v>0?'+':v<0?'−':'')+Math.abs(v*100).toFixed(1)+'%':'—';
+const pp=v=>ok(v)?Math.round(v*100)+'%':'—';
+const fR=v=>ok(v)?(v>=0?'+':'−')+Math.abs(v).toFixed(2)+'R':'—';
+const word=r=>!r||r.nohist||!r.sg?T.wait:r.sg>0?T.buy:T.sell;
+const vcol=r=>!r||r.nohist||!r.sg?'var(--wait)':r.sg>0?'var(--buy)':'var(--sell)';
+/* Kelly: f* = p − (1−p)/B ; riesgo usado = min(tu límite, ¼·f*) ;
+   tamaño = capital·riesgo / distancia al stop, con tope capital·apalancamiento */
 function sizing(r){
-  const risk$=cfg.capital*cfg.risk/100,dist=Math.abs(r.px-r.sl)/r.px,raw=risk$/dist,max=Math.min(raw,cfg.capital*cfg.lev);
-  return {risk$:max*dist,dist,notional:max,lev:max/cfg.capital,capped:raw>cfg.capital*cfg.lev,spot:Math.min(max,cfg.capital)};
+  const fs=r.p-(1-r.p)/B,kel=Math.max(0,.25*fs*100),use=r.sg?Math.min(cfg.risk,kel):cfg.risk;
+  const dist=Math.abs(r.px-r.sl)/r.px,raw=cfg.capital*use/100/dist,max=Math.min(raw,cfg.capital*cfg.lev);
+  return {kel,use,dist,notional:max,risk$:max*dist,lev:max/cfg.capital,capped:raw>cfg.capital*cfg.lev};
+}
+function tween(el,to,f){
+  const from=parseFloat(el.dataset.v);el.dataset.v=to;
+  if(RM||!ok(from)||!ok(to)){el.textContent=f(to);return}
+  const t0=performance.now(),d=650;
+  const step=t=>{const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);el.textContent=f(from+(to-from)*e);if(k<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
 }
 
-/* ═══ Render ═══ */
+/* ════════════════════════════════════════════════════════════
+   UI ESTÁTICA, IDIOMA Y CONTROLES
+   ════════════════════════════════════════════════════════════ */
+function moveInd(seg){const b=seg.querySelector('button[aria-pressed="true"]'),ind=seg.querySelector('.ind');if(!b||!ind)return;ind.style.left=b.offsetLeft+'px';ind.style.width=b.offsetWidth+'px'}
+function applyLang(){
+  T=I18N[ST.lang];document.documentElement.lang=ST.lang;document.title=T.title;
+  const md=document.querySelector('meta[name="description"]');if(md)md.content=T.desc;
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=T[el.dataset.i];if(typeof v==='string')el.innerHTML=v});
+  document.querySelectorAll('#lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===ST.lang));
+  $('#engineS').textContent=T.engineS(Object.keys(COINS).length*TFK.length);
+  $('#faq').innerHTML=T.faq.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join('');
+  setStatus(cfg.token&&cfg.chat?T.setLive:T.notSet,cfg.token&&cfg.chat?'ok':'');
+  requestAnimationFrame(()=>document.querySelectorAll('.seg').forEach(moveInd));
+}
+function buildStatic(){
+  $('#coins').insertAdjacentHTML('beforeend',Object.keys(COINS).map(s=>`<button type="button" data-c="${s}" aria-pressed="${s===ST.coin}" title="${COINS[s]}"><i class="sdot"></i>${s}</button>`).join(''));
+  $('#tfs').insertAdjacentHTML('beforeend',TFK.map(k=>`<button type="button" data-tf="${k}" aria-pressed="${k===ST.tf}"><i class="sdot"></i><span>${k}</span></button>`).join(''));
+  $('#bLeft').innerHTML=Object.keys(COINS).map(s=>`<button type="button" class="bnode" data-c="${s}" title="${COINS[s]}">${s}<i class="nd"></i></button>`).join('');
+  document.querySelectorAll('.spot').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.setProperty('--mx',(e.clientX-r.left)+'px');el.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+}
+function selectCoin(c){ST.coin=c;store.set('coin',c);render()}
+function selectTf(t){ST.tf=t;store.set('tf',t);render()}
+const cur=()=>{const R=ST.res[ST.coin]||{};return {r:R[ST.tf],up:HIGHER[ST.tf]?R[HIGHER[ST.tf]]:null}};
+
+/* ════════════════════════════════════════════════════════════
+   RENDER
+   ════════════════════════════════════════════════════════════ */
 function render(){
-  const R=ST.res[ST.coin]||{},r=R[ST.tf],up=HIGHER[ST.tf]?R[HIGHER[ST.tf]]:null;
+  const R=ST.res[ST.coin]||{},{r,up}=cur(),cx=context(r,up);
   $('#simNote').hidden=ST.live!==false;
-  document.querySelectorAll('.coin').forEach(b=>{const x=ST.res[b.dataset.c]&&ST.res[b.dataset.c]['1d'];b.setAttribute('aria-pressed',b.dataset.c===ST.coin);b.querySelector('i').style.background=x&&x.sg?col(x):'var(--line-2)'});
-  $('#tfs').innerHTML=TFS.map(([k,l,long])=>{const x=R[k];return`<button class="tf" data-tf="${k}" aria-pressed="${k===ST.tf}"><div class="t">${l} · ${long}</div><div class="s" style="color:${col(x)}">${word(x)}</div><div class="m">${x?'Fuerza '+Math.abs(x.s)+(isStrong(x,HIGHER[k]?R[HIGHER[k]]:null)?' · fuerte':''):'—'}</div></button>`}).join('');
-  if(!r){$('#hVerdict').textContent='—';$('#hSub').textContent='No hay suficiente historia en esta temporalidad.';return}
-  const tfL=TFL[ST.tf][1],agree=TFS.filter(([k])=>R[k]&&R[k].dir===r.dir&&R[k].sg).length,strong=isStrong(r,up);
-  $('#hCoin').textContent=`${COINS[ST.coin]} · ${tfL}`;
-  $('#hPx').textContent=fp(r.px);
-  $('#hTime').textContent=ST.time?(ST.live?'Binance · ':'Demo · ')+ST.time.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}):'';
-  const v=$('#hVerdict');v.className='verdict rise '+cls(r);v.textContent=word(r).toUpperCase();
-  $('#hero').style.setProperty('--glow',r.sg>0?'rgba(52,211,153,.13)':r.sg<0?'rgba(251,113,133,.13)':'rgba(163,174,194,.06)');
-  const dirW=r.dir>0?'compra':'venta';
-  $('#hSub').innerHTML= weak(r)
-    ? `Hay señal técnica de ${dirW}, <b>pero históricamente falla más de lo que acierta</b> aquí. <span>Mejor esperar o buscarla en otra temporalidad.</span>`
-    : r.sg
-    ? (strong?`<b>Señal fuerte de ${dirW}.</b> `:`Señal de ${dirW} moderada. `)+`<span>${agree} de 4 temporalidades a favor${up&&up.sg===-r.sg?', pero '+TFL[HIGHER[ST.tf]][1]+' va en contra: mejor esperar o entrar con menos':''}.</span>`
-    : `Sin ventaja clara ahora. <span>El mercado se inclina a la ${dirW} (${r.s>0?'+':''}${r.s}); el motor espera a que llegue a ±50.</span>`;
-  $('#hBadges').innerHTML=[
-    `<span class="badge ${strong?(r.sg>0?'hot':'hot-s'):''}">Fuerza <b>${Math.abs(r.s)}/100</b></span>`,
-    `<span class="badge">Alineación <b>${agree}/4</b></span>`,
-    `<span class="badge">Riesgo : beneficio <b>1 : ${(TP1_ATR/SL_ATR).toFixed(1)}</b></span>`
+  document.querySelectorAll('#coins button').forEach(b=>{const x=(ST.res[b.dataset.c]||{})[ST.tf];b.setAttribute('aria-pressed',b.dataset.c===ST.coin);b.querySelector('.sdot').className='sdot'+(x&&x.sg>0?' b':x&&x.sg<0?' s':'')});
+  document.querySelectorAll('#tfs button').forEach(b=>{const x=R[b.dataset.tf];b.setAttribute('aria-pressed',b.dataset.tf===ST.tf);b.querySelector('span').textContent=tfS(b.dataset.tf);b.title=T.tf[b.dataset.tf][1];b.querySelector('.sdot').className='sdot'+(x&&x.sg>0?' b':x&&x.sg<0?' s':'')});
+  document.querySelectorAll('.seg').forEach(moveInd);
+  const lv=$('#live');lv.className='live'+(ST.live?' on':'');
+  lv.lastElementChild.textContent=ST.time?(ST.live?T.live:T.demo)+' · '+ST.time.toLocaleTimeString(T.loc,{hour:'2-digit',minute:'2-digit'}):T.loading;
+  if(!ST.time)return;
+  renderPrimary(r,cx);renderEngine();renderHeat();renderDrivers(r);renderVal(r);renderJournal();
+  requestAnimationFrame(()=>{drawPrice(r);drawVal(r);drawBeams()});
+}
+
+function renderPrimary(r,cx){
+  const P=$('#primary'),vc=vcol(r);
+  P.style.setProperty('--vc',vc);P.style.setProperty('--beamA',vc);P.classList.toggle('idle',!r||!r.sg);
+  P.style.setProperty('--glow',!r||!r.sg?'rgba(139,124,255,.10)':r.sg>0?'rgba(62,230,160,.16)':'rgba(255,107,139,.16)');
+  $('#pCoin').textContent=`${COINS[ST.coin]} · ${T.tf[ST.tf][1]}`;$('#pPx').textContent=r?fp(r.px):'';
+  const v=$('#pVerdict'),w=word(r).toUpperCase();
+  if(v.textContent!==w){v.textContent=w;v.classList.remove('in');void v.offsetWidth;v.classList.add('in')}
+  if(!r||r.nohist){
+    $('#pSub').innerHTML=T.sub.nohist;$('#pProb').textContent='—';$('#pProb').dataset.v='';$('#pProbL').textContent='';$('#pFill').style.width='0';$('#pChips').innerHTML='';
+    $('#tRows').innerHTML='';$('#tSide').textContent='';$('#sBig').textContent='—';$('#sBig').dataset.v='';$('#sSub').textContent='';$('#ticket').classList.add('dim');return;
+  }
+  const dW=r.side>0?T.dBuy:T.dSell;
+  $('#pSub').innerHTML=r.sg?(cx.strong?T.sub['st'+(r.sg>0?'1':'_1')]:T.sub['s'+(r.sg>0?'1':'_1')])+(cx.against?T.against(tfS(HIGHER[ST.tf])):''):T.sub[r.reason](dW,pp(r.p));
+  tween($('#pProb'),r.p*100,x=>Math.round(x)+'%');
+  $('#pProbL').textContent=T.probL(dW);
+  $('#pFill').style.width=(r.p*100)+'%';$('#pBE').style.left=(BE*100)+'%';$('#pBEl').style.left=(BE*100)+'%';$('#pBEl').textContent=T.be+' '+pp(BE);
+  const ic={ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',no:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>'};
+  const ed=(r.p-r.base)*100;
+  $('#pChips').innerHTML=[
+    `<span class="chip">${T.evChip} <b>${fR(r.ev)}</b></span>`,
+    `<span class="chip">${T.edge} <b>${(ed>=0?'+':'−')+Math.abs(ed).toFixed(1)} pts</b></span>`,
+    r.validated?`<span class="chip ok">${ic.ok}${T.valOk(pp(r.V.hit),r.V.n)}</span>`:`<span class="chip no">${ic.no}${T.valNo}</span>`,
+    cx.strong?`<span class="chip hot">⚡ ${T.strongChip}</span>`:''
   ].join('');
-  // anillo de acierto histórico
-  const w=r.win,C=2*Math.PI*52,okN=r.n>=STRONG.n;
-  $('#ring').innerHTML=`<svg width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Acierto histórico"><circle cx="64" cy="64" r="52" fill="none" stroke="var(--line)" stroke-width="10"/><circle cx="64" cy="64" r="52" fill="none" stroke="${ok(w)?(w>=.55?'var(--buy)':w>=.45?'var(--warn)':'var(--sell)'):'var(--line-2)'}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${ok(w)?C*w:0} ${C}" transform="rotate(-90 64 64)" style="transition:stroke-dasharray .6s"/><text x="64" y="62" text-anchor="middle" fill="var(--fg)" font-family="Geist Mono,monospace" font-size="26" font-weight="600">${ok(w)?Math.round(w*100)+'%':'—'}</text><text x="64" y="82" text-anchor="middle" fill="var(--muted)" font-family="Geist,sans-serif" font-size="11">acierto</text></svg><div class="lbl">Esta señal de ${dirW} en ${tfL} acertó ${r.n?Math.round(w*r.n)+' de '+r.n+' veces':'— (sin casos)'}${okN?'':'<br><span style="color:var(--warn)">Muestra pequeña</span>'}</div>`;
-  // plan
-  const S=r.dir;
-  $('#planT').textContent=r.sg?(S>0?'Plan de compra':'Plan de venta (short)'):(S>0?'Si se confirma la compra':'Si se confirma la venta');
-  $('#planS').textContent=r.sg?'Niveles calculados con la volatilidad real (ATR) de '+tfL:'Todavía no es señal: niveles de referencia por si llega';
-  const lo=Math.min(r.zoneA,r.zoneB),hi=Math.max(r.zoneA,r.zoneB);
-  $('#plan').innerHTML=[
-    [S>0?'Zona de compra':'Zona de venta',`${fp(lo)} – ${fp(hi)}`,'orden límite'],
-    ['Stop (salir si llega)',fp(r.sl),pc((r.sl-r.px)/r.px)],
-    ['Objetivo 1 · toma la mitad',fp(r.tp1),pc((r.tp1-r.px)/r.px)],
-    ['Objetivo 2 · el resto',fp(r.tp2),pc((r.tp2-r.px)/r.px)],
-    ['Tras objetivo 1','Mueve el stop a tu entrada','']
-  ].map(([a,b,c])=>`<div class="row"><span>${a}</span><b>${b}${c?`<small>${c}</small>`:''}</b></div>`).join('');
-  // tamaño
+  const S=r.side,sc=S<0?' short':'',lo=Math.min(r.zoneA,r.px),hi=Math.max(r.zoneA,r.px);
+  $('#ticket').classList.toggle('dim',!r.sg);
+  $('#tTitle').textContent=r.sg?T.ticketT:T.refT;
+  const ts=$('#tSide');ts.textContent=S>0?T.long:T.short;ts.className='pill '+(S>0?'b':'s');
+  $('#tRows').innerHTML=[
+    ['',S>0?T.zoneBuy:T.zoneSell,`${fp(lo)} – ${fp(hi)}`,T.limit],
+    ['stop'+sc,T.stop,fp(r.sl),pc((r.sl-r.px)/r.px)],
+    ['tgt'+sc,T.t1,fp(r.tp1),pc((r.tp1-r.px)/r.px)+' · '+T.moveStop],
+    ['tgt'+sc,T.t2,fp(r.tp2),pc((r.tp2-r.px)/r.px)]
+  ].map(([c,a,b,s])=>`<div class="t-row ${c}"><span>${a}</span><div><b>${b}</b><small>${s}</small></div></div>`).join('');
   const z=sizing(r);
-  $('#sizeBig').textContent=fm(z.notional);
-  $('#sizeSub').innerHTML=z.lev<=1?`Sin apalancamiento (spot). Equivale al ${Math.round(z.lev*100)}% de tu capital.`:`Requiere apalancamiento de <b style="color:var(--fg)">${z.lev.toFixed(1)}×</b>${z.capped?' (limitado por tu máximo)':''}. En spot, mete máximo ${fm(z.spot)}.`;
-  $('#sizeRows').innerHTML=[
-    ['Si toca el stop pierdes',fm(z.risk$)+` <small>${(z.risk$/cfg.capital*100).toFixed(1)}% de tu capital</small>`],
-    ['Si llega al objetivo 1 ganas',fm(z.notional*Math.abs(r.tp1-r.px)/r.px)],
-    ['Cantidad',`${(z.notional/r.px).toLocaleString('es-MX',{maximumFractionDigits:r.px>100?4:0})} ${ST.coin}`]
-  ].map(([a,b])=>`<div class="row"><span>${a}</span><b>${b}</b></div>`).join('');
-  // por qué
-  $('#why').innerHTML=r.why.map(([d,t])=>`<li class="${d>0?'p':d<0?'n':'z'}"><i>${d>0?'▲':d<0?'▼':'•'}</i><span>${t}</span></li>`).join('')+
-    (up?`<li class="${up.sg===r.dir?'p':up.sg===-r.dir?'n':'z'}"><i>${up.sg===r.dir?'✓':up.sg===-r.dir?'!':'•'}</i><span>La temporalidad mayor (${TFL[HIGHER[ST.tf]][1]}) dice <b>${word(up).toLowerCase()}</b>${up.sg===-r.dir?': opera con menos tamaño o espera.':'.'}</span></li>`:'');
-  // radar
-  const rows=Object.keys(COINS).map(s=>{const X=ST.res[s]||{},d=X['1d'],sc=TFS.reduce((a,[k])=>a+(X[k]?X[k].s:0),0);return{s,X,d,sc}}).sort((a,b)=>Math.abs(b.sc)-Math.abs(a.sc));
-  $('#radar').innerHTML=rows.map(({s,X,sc})=>{const best=TFS.map(([k])=>[k,X[k]]).filter(([k,x])=>isStrong(x,HIGHER[k]?X[HIGHER[k]]:null));const lead=best[0];
-    return`<button class="r-row" data-c="${s}"><span class="r-sym">${s}</span><span class="dots">${TFS.map(([k,l])=>`<span class="dot ${X[k]&&X[k].sg>0?'b':X[k]&&X[k].sg<0?'s':''}"><i></i>${l}</span>`).join('')}</span><span class="r-v" style="color:${lead?col(lead[1]):sc>0?'var(--buy)':sc<0?'var(--sell)':'var(--wait)'}">${lead?word(lead[1])+' '+TFL[lead[0]][1]:sc>=100?'Sesgo alcista':sc<=-100?'Sesgo bajista':'Neutral'}</span></button>`}).join('');
-  drawChart(r);
+  if(r.sg&&z.use<=0){$('#sBig').textContent='$0';$('#sBig').dataset.v=0;$('#sSub').textContent=T.noTrade}
+  else{tween($('#sBig'),z.notional,fm);$('#sSub').innerHTML=(z.lev<=1?T.spot(Math.round(z.lev*100)):T.lev(z.lev.toFixed(1),z.capped))+' '+T.riskLine(fm(z.risk$),z.kel.toFixed(2)+'%')}
 }
 
-function drawChart(r){
-  const cv=$('#cv'),b=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);cv.width=b.width*dpr;cv.height=b.height*dpr;
-  const x=cv.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);const W=b.width,H=b.height,P={l:4,r:64,t:8,b:8};
-  const c=r.closes,levels=[[r.tp2,'--buy','Obj 2'],[r.tp1,'--buy','Obj 1'],[r.zoneA,'--accent','Entrada'],[r.sl,'--sell','Stop']];
-  if(r.dir<0)levels.forEach(l=>{if(l[2].startsWith('Obj'))l[1]='--sell';if(l[2]==='Stop')l[1]='--buy'});
-  const all=c.concat(levels.map(l=>l[0])),lo=Math.min(...all),hi=Math.max(...all),cs=getComputedStyle(document.documentElement);
-  const xs=i=>P.l+i/(c.length-1)*(W-P.l-P.r),ys=v=>P.t+(hi-v)/(hi-lo||1)*(H-P.t-P.b);
-  x.fillStyle=cs.getPropertyValue('--buy').trim()+'14';x.fillRect(P.l,Math.min(ys(r.tp1),ys(r.px)),W-P.l-P.r,Math.abs(ys(r.tp1)-ys(r.px)));
-  for(const [v,tk,l] of levels){const y=Math.round(ys(v))+.5,cc=cs.getPropertyValue(tk).trim();x.strokeStyle=cc;x.globalAlpha=.75;x.setLineDash([4,4]);x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r+4,y);x.stroke();x.setLineDash([]);x.globalAlpha=1;x.fillStyle=cc;x.font='10.5px Geist Mono,monospace';x.textBaseline='middle';x.fillText(l,W-P.r+8,y)}
+function stats(){
+  const f={scan:0,nohist:0,lowp:0,ev:0,noval:0,late:0,against:0,pass:0,strong:0},list=[];
+  for(const s in ST.res)for(const tf of TFK){const r=ST.res[s][tf],up=HIGHER[tf]?ST.res[s][HIGHER[tf]]:null;f.scan++;
+    if(!r||r.nohist){f.nohist++;continue}if(!r.sg){f[r.reason]++;continue}
+    f.pass++;const c=context(r,up);if(c.against)f.against++;if(c.strong){f.strong++;list.push([s,tf,r,up])}}
+  return {f,list};
+}
+function renderEngine(){
+  const {f}=stats();
+  tween($('#oRej'),f.scan-f.pass,x=>Math.round(x));tween($('#oPass'),f.pass,x=>Math.round(x));tween($('#oStrong'),f.strong,x=>Math.round(x));
+  document.querySelectorAll('#bLeft .bnode').forEach(b=>{const X=ST.res[b.dataset.c]||{};const any=TFK.map(k=>X[k]).filter(x=>x&&x.sg);b.querySelector('.nd').className='nd'+(any.length?(any[0].sg>0?' b':' s'):'')});
+  const rows=[['scan',f.scan,'vi'],['nohist',f.nohist],['lowp',f.lowp],['ev',f.ev],['noval',f.noval],['late',f.late],['against',f.against],['pass',f.pass,'ok'],['strong',f.strong,'vi']].filter(([k,v])=>v>0||['scan','pass','strong'].includes(k));
+  $('#funnel').innerHTML=rows.map(([k,v,c])=>`<li class="${c||''}"><span>${T.f[k]}</span><b>${v}</b><span class="fb"><span style="width:${f.scan?v/f.scan*100:0}%"></span></span></li>`).join('');
+}
+function renderHeat(){
+  let h='<span></span>'+TFK.map(k=>`<span class="hh">${tfS(k)}</span>`).join('');
+  for(const s in COINS){h+=`<span class="hr">${s}</span>`;for(const tf of TFK){const X=ST.res[s]||{},r=X[tf],up=HIGHER[tf]?X[HIGHER[tf]]:null,st=context(r,up).strong,sel=s===ST.coin&&tf===ST.tf;
+    let sty='',txt='—';
+    if(r&&!r.nohist){const a=clamp((r.p-.45)/.25,0,1);txt=(r.side>0?'↑':'↓')+' '+pp(r.p);if(r.sg){const c=r.sg>0?'62,230,160':'255,107,139';sty=`background:rgba(${c},${(.12+.4*a).toFixed(2)});border-color:rgba(${c},.45);color:var(--fg)`}}
+    h+=`<button type="button" class="cell${sel?' sel':''}${st?' st':''}" style="${sty}" data-c="${s}" data-tf="${tf}" aria-label="${s} ${tfS(tf)}: ${word(r)}" aria-pressed="${sel}">${txt}</button>`}}
+  $('#heat').innerHTML=h;
+}
+function renderDrivers(r){
+  if(!r||r.nohist||!r.drivers.length){$('#drv').innerHTML=`<li style="color:var(--faint);display:block">${T.noDrv}</li>`;return}
+  const mx=Math.max(...r.drivers.map(d=>Math.abs(d.c)))||1;
+  $('#drv').innerHTML=r.drivers.map(d=>{const w=Math.abs(d.c)/mx*50,pos=d.c>=0,rd=d.z>.5?T.hi:d.z<-.5?T.lo:T.norm;
+    return `<li><div><span class="dn">${T.fn[d.j]}</span><span class="dr">${rd} · ${pos?T.supports:T.againstW}</span></div><div class="dbar"><span style="${pos?'left:50%':'right:50%'};width:${w}%;background:${pos?'var(--buy)':'var(--sell)'}"></span></div></li>`}).join('');
+}
+function renderVal(r){
+  const V=r&&!r.nohist?r.V:null;
+  $('#vkpi').innerHTML=[[T.vTrades,V?V.n:'—'],[T.vHit,V&&V.n?pp(V.hit):'—'],[T.vBE,pp(BE)],[T.vEV,V&&V.n?fR(V.ev):'—']].map(([a,b],i)=>`<div><span>${a}</span><b style="${i===1&&V&&V.n?'color:'+(V.hit>BE+M.margin?'var(--buy)':'var(--sell)'):''}">${b}</b></div>`).join('');
+}
+
+/* ════════════════════════════════════════════════════════════
+   GRÁFICAS Y BEAMS
+   ════════════════════════════════════════════════════════════ */
+const CS=()=>getComputedStyle(document.documentElement);
+function cvSetup(cv){const b=cv.getBoundingClientRect(),dpr=Math.min(2,devicePixelRatio||1);cv.width=Math.max(1,b.width*dpr);cv.height=Math.max(1,b.height*dpr);const x=cv.getContext('2d');x.setTransform(dpr,0,0,dpr,0,0);x.clearRect(0,0,b.width,b.height);return{x,W:b.width,H:b.height}}
+function emptyMsg(cv,msg){const p=cv.parentElement;let e=p.querySelector('.empty');if(msg){if(!e){e=document.createElement('div');e.className='empty';p.appendChild(e)}e.textContent=msg}else if(e)e.remove()}
+function drawPrice(r){
+  const cv=$('#cvPx'),{x,W,H}=cvSetup(cv),cs=CS(),P={l:4,r:70,t:10,b:10};
+  $('#chartS').textContent=T.chartS(tfS(ST.tf));
+  if(!r){emptyMsg(cv,T.sub.nohist);return}emptyMsg(cv);
+  const c=r.closes,gd=r.side>0?'--buy':'--sell',bd=r.side>0?'--sell':'--buy';
+  const lv=r.nohist?[]:[[r.tp2,gd,'T2'],[r.tp1,gd,'T1'],[r.zoneA,'--violet',T.entry],[r.sl,bd,'Stop']];
+  const all=c.concat(lv.map(l=>l[0])),lo=Math.min(...all),hi=Math.max(...all),xs=i=>P.l+i/(c.length-1)*(W-P.l-P.r),ys=v=>P.t+(hi-v)/(hi-lo||1)*(H-P.t-P.b);
+  const g=x.createLinearGradient(0,P.t,0,H);g.addColorStop(0,'rgba(139,124,255,.28)');g.addColorStop(1,'rgba(139,124,255,0)');
+  x.beginPath();c.forEach((v,i)=>i?x.lineTo(xs(i),ys(v)):x.moveTo(xs(i),ys(v)));x.lineTo(xs(c.length-1),H-P.b);x.lineTo(xs(0),H-P.b);x.closePath();x.fillStyle=g;x.fill();
+  for(const [v,tk,l] of lv){const y=Math.round(ys(v))+.5,cc=cs.getPropertyValue(tk).trim();x.strokeStyle=cc;x.globalAlpha=.7;x.setLineDash([4,4]);x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r+4,y);x.stroke();x.setLineDash([]);x.globalAlpha=1;x.fillStyle=cc;x.font='10.5px Geist Mono,monospace';x.textBaseline='middle';x.fillText(l,W-P.r+8,y)}
   x.strokeStyle=cs.getPropertyValue('--fg').trim();x.lineWidth=1.6;x.lineJoin='round';x.beginPath();c.forEach((v,i)=>i?x.lineTo(xs(i),ys(v)):x.moveTo(xs(i),ys(v)));x.stroke();
-  x.beginPath();x.arc(xs(c.length-1),ys(c[c.length-1]),3.5,0,7);x.fillStyle=cs.getPropertyValue('--fg').trim();x.fill();
+  const ex=xs(c.length-1),ey=ys(c[c.length-1]);x.beginPath();x.arc(ex,ey,7,0,7);x.fillStyle='rgba(139,124,255,.25)';x.fill();x.beginPath();x.arc(ex,ey,3.5,0,7);x.fillStyle='#fff';x.fill();
+}
+function drawVal(r){
+  const cv=$('#cvVal'),{x,W,H}=cvSetup(cv),cs=CS(),P={l:40,r:10,t:10,b:10};
+  const V=r&&!r.nohist?r.V:null;
+  if(!V||V.n<3){emptyMsg(cv,T.vNone);return}emptyMsg(cv);
+  const c=V.curve,lo=Math.min(0,...c),hi=Math.max(0,...c),xs=i=>P.l+i/(c.length-1)*(W-P.l-P.r),ys=v=>P.t+(hi-v)/(hi-lo||1)*(H-P.t-P.b);
+  x.font='10px Geist Mono,monospace';x.fillStyle=cs.getPropertyValue('--faint').trim();x.textAlign='right';x.textBaseline='middle';
+  [...new Set([hi,0,lo])].forEach(v=>{const y=Math.round(ys(v))+.5;x.strokeStyle='rgba(255,255,255,'+(v===0?.18:.06)+')';x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();x.fillText((v>0?'+':'')+v.toFixed(0)+'R',P.l-6,y)});
+  const col=c[c.length-1]>=0?cs.getPropertyValue('--buy').trim():cs.getPropertyValue('--sell').trim();
+  const g=x.createLinearGradient(0,P.t,0,H);g.addColorStop(0,col+'40');g.addColorStop(1,col+'00');
+  x.beginPath();c.forEach((v,i)=>i?x.lineTo(xs(i),ys(v)):x.moveTo(xs(i),ys(v)));x.lineTo(xs(c.length-1),ys(0));x.lineTo(xs(0),ys(0));x.closePath();x.fillStyle=g;x.fill();
+  x.strokeStyle=col;x.lineWidth=1.8;x.lineJoin='round';x.beginPath();c.forEach((v,i)=>i?x.lineTo(xs(i),ys(v)):x.moveTo(xs(i),ys(v)));x.stroke();
+  x.beginPath();x.arc(xs(c.length-1),ys(c[c.length-1]),3.5,0,7);x.fillStyle=col;x.fill();
+}
+/* Animated beams (estilo Magic UI): curvas cúbicas entre nodos con un segmento de gradiente que viaja */
+function drawBeams(){
+  const wrap=$('#beam'),svg=$('#beamSvg'),wr=wrap.getBoundingClientRect();if(!wr.width)return;
+  const box=el=>{const r=el.getBoundingClientRect();return{x:r.left-wr.left,y:r.top-wr.top,w:r.width,h:r.height}};
+  const core=box($('#core')),cy=core.y+core.h/2,{f}=stats(),pairs=[];
+  document.querySelectorAll('#bLeft .bnode').forEach((n,i)=>{const a=box(n);pairs.push({a:{x:a.x+a.w,y:a.y+a.h/2},b:{x:core.x,y:cy},c1:'#8B7CFF',c2:'#67E8F9',dur:2.2+i*.17,delay:-i*.4})});
+  const outs={rej:['#6A6580','#A09BB6',3.6,f.scan-f.pass],pass:['#8B7CFF','#3EE6A0',2.2,f.pass],strong:['#67E8F9','#C9BEFF',1.8,f.strong]};
+  document.querySelectorAll('#bRight .bnode').forEach((n,i)=>{const a=box(n),o=outs[n.dataset.o];pairs.push({a:{x:core.x+core.w,y:cy},b:{x:a.x,y:a.y+a.h/2},c1:o[0],c2:o[1],dur:o[2],delay:-i*.5,off:!o[3]})});
+  svg.setAttribute('viewBox',`0 0 ${wr.width} ${wr.height}`);
+  svg.innerHTML='<defs>'+pairs.map((p,i)=>`<linearGradient id="bg${i}" gradientUnits="userSpaceOnUse" x1="${p.a.x}" y1="${p.a.y}" x2="${p.b.x}" y2="${p.b.y}"><stop offset="0" stop-color="${p.c1}" stop-opacity="0"/><stop offset=".5" stop-color="${p.c1}"/><stop offset="1" stop-color="${p.c2}"/></linearGradient>`).join('')+'</defs>'+
+    pairs.map((p,i)=>{const mx=(p.a.x+p.b.x)/2,d=`M${p.a.x},${p.a.y} C${mx},${p.a.y} ${mx},${p.b.y} ${p.b.x},${p.b.y}`;
+      return `<path d="${d}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>`+(p.off?'':`<path class="beam-dash" d="${d}" fill="none" stroke="url(#bg${i})" stroke-width="2.2" stroke-linecap="round" pathLength="100" stroke-dasharray="22 78" style="--dur:${p.dur}s;--delay:${p.delay}s"/>`)}).join('');
 }
 
-/* ═══ Telegram ═══ */
+/* ════════════════════════════════════════════════════════════
+   BITÁCORA (registro real hacia adelante)
+   ════════════════════════════════════════════════════════════ */
+function updateJournal(){
+  if(!ST.live)return;
+  const J=store.get('journal',[]),now=Date.now();
+  for(const [s,tf,r] of stats().list){const id=`${s}|${tf}|${r.sg}|${r.barT}`;
+    if(!J.some(e=>e.id===id))J.push({id,coin:s,tf,dir:r.sg,t:r.barT,at:now,entry:r.px,sl:r.sl,tp1:r.tp1,p:r.p,status:'open'})}
+  for(const e of J){if(e.status!=='open')continue;const r=(ST.res[e.coin]||{})[e.tf];if(!r||!r.D)continue;const D=r.D;
+    const i0=D.t.findIndex(t=>t>e.t);if(i0<0)continue;
+    for(let k=i0;k<D.t.length;k++){if(e.dir>0){if(D.l[k]<=e.sl){e.status='loss';break}if(D.h[k]>=e.tp1){e.status='win';break}}else{if(D.h[k]>=e.sl){e.status='loss';break}if(D.l[k]<=e.tp1){e.status='win';break}}}
+    if(e.status==='open'&&D.t.length-i0>M.look)e.status='exp'}
+  store.set('journal',J.slice(-200));
+}
+function renderJournal(){
+  const srv=ST.server&&ST.server.length?ST.server:null,J=(srv||store.get('journal',[])).slice().sort((a,b)=>b.t-a.t);
+  $('#jSrc').textContent=srv?T.jServer:T.jLocal;
+  const w=J.filter(e=>e.status==='win').length,l=J.filter(e=>e.status==='loss').length,o=J.filter(e=>e.status==='open').length;
+  $('#jStats').innerHTML=`<span>${T.jWins}<b style="color:var(--buy)">${w}</b></span><span>${T.jLoss}<b style="color:var(--sell)">${l}</b></span><span>${T.jOpen}<b>${o}</b></span><span>${T.jHit}<b>${w+l?pp(w/(w+l)):'—'}</b></span>`;
+  if(!J.length){$('#jTbl').innerHTML=`<tbody><tr><td style="font-family:var(--ui);color:var(--faint);white-space:normal">${T.jEmpty}</td></tr></tbody>`;return}
+  const d=t=>new Date(t).toLocaleDateString(T.loc,{day:'numeric',month:'short'});
+  $('#jTbl').innerHTML=`<thead><tr>${T.jCols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>`+J.slice(0,10).map(e=>`<tr><td>${d(e.t)}</td><td>${e.coin} ${tfS(e.tf)}</td><td><span class="pill ${e.dir>0?'b':'s'}">${e.dir>0?T.long:T.short}</span></td><td>${fp(e.entry)}</td><td>${pp(e.p)}</td><td><span class="pill ${e.status==='win'?'b':e.status==='loss'?'s':'v'}">${T.jSt[e.status]||e.status}</span></td></tr>`).join('')+'</tbody>';
+}
+
+/* ════════════════════════════════════════════════════════════
+   COPIAR PLAN Y TELEGRAM
+   ════════════════════════════════════════════════════════════ */
+function planText(coin,tf,r){
+  const z=sizing(r),Mx=T.msg,e=r.side>0?'🟢 '+T.buy.toUpperCase():'🔴 '+T.sell.toUpperCase();
+  return `<b>${e} ${coin} · ${tfS(tf)}</b>\n${Mx.price}: ${fp(r.px)}\n${Mx.zone}: ${fp(Math.min(r.zoneA,r.px))} – ${fp(Math.max(r.zoneA,r.px))}\n${Mx.stop}: ${fp(r.sl)} (${pc((r.sl-r.px)/r.px)})\n${Mx.t1}: ${fp(r.tp1)} · ${Mx.t2}: ${fp(r.tp2)}\n\n${Mx.prob}: ${pp(r.p)} · ${Mx.ev}: ${fR(r.ev)}\n${Mx.val}: ${r.validated?pp(r.V.hit)+' / '+r.V.n:'—'}\n${Mx.max}: ${fm(z.notional)}${z.lev>1?' ('+z.lev.toFixed(1)+'×)':''} · ${Mx.risk} ${fm(z.risk$)}`;
+}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1800)}
+$('#copyPlan').addEventListener('click',async()=>{
+  const {r}=cur();if(!r||r.nohist)return;
+  const txt=planText(ST.coin,ST.tf,r).replace(/<[^>]+>/g,'');
+  try{await navigator.clipboard.writeText(txt);toast(T.copied)}catch(e){const s=getSelection(),rg=document.createRange();rg.selectNodeContents($('#ticket'));s.removeAllRanges();s.addRange(rg);toast(T.copyFail)}
+});
 async function tgSend(text){
-  if(!cfg.token||!cfg.chat)throw new Error('Falta token o chat ID');
+  if(!cfg.token||!cfg.chat)throw new Error(T.missing);
   const body=new URLSearchParams({chat_id:cfg.chat,text,parse_mode:'HTML',disable_web_page_preview:'true'});
   const r=await fetch(`https://api.telegram.org/bot${encodeURIComponent(cfg.token).replace('%3A',':')}/sendMessage`,{method:'POST',body});
-  const j=await r.json().catch(()=>({}));if(!j.ok)throw new Error(j.description||'Telegram rechazó el mensaje');
-}
-function tgText(coin,tf,r,up){
-  const z=sizing(r),e=r.sg>0?'🟢 COMPRAR':'🔴 VENDER';
-  return `<b>${e} ${coin} · ${TFL[tf][1]}</b>\nPrecio: ${fp(r.px)}\nZona: ${fp(Math.min(r.zoneA,r.zoneB))} – ${fp(Math.max(r.zoneA,r.zoneB))}\nStop: ${fp(r.sl)} (${pc((r.sl-r.px)/r.px)})\nObjetivo 1: ${fp(r.tp1)} · Objetivo 2: ${fp(r.tp2)}\n\nAcierto histórico: ${Math.round(r.win*100)}% (${r.n} señales)\nFuerza: ${Math.abs(r.s)}/100${up?' · '+TFL[HIGHER[tf]][1]+': '+word(up).toLowerCase():''}\nMáximo a meter: ${fm(z.notional)}${z.lev>1?' ('+z.lev.toFixed(1)+'×)':''} · arriesgas ${fm(z.risk$)}`;
+  const j=await r.json().catch(()=>({}));if(!j.ok)throw new Error(j.description||T.rejected);
 }
 async function autoAlerts(){
   if(!ST.live||!cfg.token||!cfg.chat)return;
   const sent=store.get('sent',{});let n=0;
-  for(const s in ST.res)for(const [tf] of TFS){const r=ST.res[s][tf],up=HIGHER[tf]?ST.res[s][HIGHER[tf]]:null;
-    if(!isStrong(r,up))continue;const key=`${s}|${tf}`,val=`${r.sg}@${r.barT}`;if(sent[key]===val)continue;
-    try{await tgSend(tgText(s,tf,r,up));sent[key]=val;n++}catch(e){}}
-  store.set('sent',sent);if(n)setStatus(`Enviadas ${n} alertas nuevas a Telegram.`,'ok');
+  for(const [s,tf,r] of stats().list){const key=`${s}|${tf}`,val=`${r.sg}@${r.barT}`;if(sent[key]===val)continue;try{await tgSend(planText(s,tf,r));sent[key]=val;n++}catch(e){}}
+  store.set('sent',sent);if(n)setStatus(T.sentN(n),'ok');
 }
 function setStatus(t,c){const el=$('#tgStatus');el.textContent=t;el.className='status '+(c||'')}
 
-/* ═══ Arranque ═══ */
-$('#coins').innerHTML=Object.keys(COINS).map(s=>`<button class="coin" data-c="${s}" aria-pressed="false"><i></i>${s}</button>`).join('');
-$('#coins').addEventListener('click',e=>{const b=e.target.closest('.coin');if(!b)return;ST.coin=b.dataset.c;store.set('coin',ST.coin);render()});
-$('#radar').addEventListener('click',e=>{const b=e.target.closest('.r-row');if(!b)return;ST.coin=b.dataset.c;store.set('coin',ST.coin);render();scrollTo({top:0,behavior:'smooth'})});
-$('#tfs').addEventListener('click',e=>{const b=e.target.closest('.tf');if(!b)return;ST.tf=b.dataset.tf;store.set('tf',ST.tf);render()});
-for(const k of ['capital','risk','lev']){const el=$('#'+k);el.value=cfg[k];el.addEventListener('input',()=>{const v=parseFloat(el.value);if(ok(v)&&v>0){cfg[k]=v;store.set('cfg',cfg);render()}})}
+/* ════════════════════════════════════════════════════════════
+   ARRANQUE
+   ════════════════════════════════════════════════════════════ */
+buildStatic();
+$('#coins').addEventListener('click',e=>{const b=e.target.closest('button');if(b)selectCoin(b.dataset.c)});
+$('#bLeft').addEventListener('click',e=>{const b=e.target.closest('button');if(b)selectCoin(b.dataset.c)});
+$('#tfs').addEventListener('click',e=>{const b=e.target.closest('button');if(b)selectTf(b.dataset.tf)});
+$('#heat').addEventListener('click',e=>{const b=e.target.closest('.cell');if(!b)return;ST.coin=b.dataset.c;ST.tf=b.dataset.tf;store.set('coin',ST.coin);store.set('tf',ST.tf);render();$('#primary').scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})});
+$('#lang').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ST.lang=b.dataset.lang;store.set('lang',ST.lang);applyLang();render()});
+for(const k of ['capital','risk','lev']){const el=$('#'+k);el.value=cfg[k];el.addEventListener('input',()=>{const v=parseFloat(el.value);if(ok(v)&&v>0){cfg[k]=v;store.set('cfg',cfg);if(ST.time){const {r,up}=cur();renderPrimary(r,context(r,up))}}})}
 $('#tgToken').value=cfg.token;$('#tgChat').value=cfg.chat;
-for(const [id,k] of [['tgToken','token'],['tgChat','chat']])$('#'+id).addEventListener('change',e=>{cfg[k]=e.target.value.trim();store.set('cfg',cfg);setStatus(cfg.token&&cfg.chat?'Configurado. Prueba el envío.':'Sin configurar.')});
-if(cfg.token&&cfg.chat)setStatus('Configurado. Te aviso aquí mientras la página esté abierta.','ok');
-$('#tgTest').addEventListener('click',async()=>{cfg.token=$('#tgToken').value.trim();cfg.chat=$('#tgChat').value.trim();store.set('cfg',cfg);setStatus('Enviando…');
-  try{const r=ST.res[ST.coin]&&ST.res[ST.coin][ST.tf];await tgSend('✅ <b>QUANTUM conectado</b>\n'+(r?`${ST.coin} ${TFL[ST.tf][1]}: ${word(r)} · fuerza ${Math.abs(r.s)}/100`:'Listo para alertas.'));setStatus('Mensaje enviado. Revisa tu Telegram.','ok')}
-  catch(e){setStatus(ST.live===false?'Este visor bloquea Telegram. Pruébalo desde la versión en tu hosting.':'No se pudo enviar: '+e.message,'err')}});
-async function cycle(){await loadAll();render();autoAlerts()}
+for(const [id,k] of [['tgToken','token'],['tgChat','chat']])$('#'+id).addEventListener('change',e=>{cfg[k]=e.target.value.trim();store.set('cfg',cfg);setStatus(cfg.token&&cfg.chat?T.setOk:T.notSet)});
+$('#tgTest').addEventListener('click',async()=>{cfg.token=$('#tgToken').value.trim();cfg.chat=$('#tgChat').value.trim();store.set('cfg',cfg);setStatus(T.sending);
+  try{const {r}=cur();await tgSend(T.msg.ok+(r&&!r.nohist?`\n${ST.coin} ${tfS(ST.tf)}: ${word(r)} · ${pp(r.p)}`:''));setStatus(T.sent,'ok')}
+  catch(e){setStatus(ST.live===false?T.blocked:T.fail+e.message,'err')}});
+async function cycle(){if(ST.busy)return;await loadAll();updateJournal();render();autoAlerts()}
 $('#refresh').addEventListener('click',cycle);
-let w=innerWidth;addEventListener('resize',()=>{if(innerWidth!==w){w=innerWidth;render()}});
+let lastW=innerWidth,rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{document.querySelectorAll('.seg').forEach(moveInd);if(innerWidth!==lastW&&ST.time){lastW=innerWidth;render()}},120)});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{document.querySelectorAll('.seg').forEach(moveInd);if(ST.time)drawBeams()});
 setInterval(()=>{if(!document.hidden)cycle()},5*60e3);
-cycle();
+applyLang();render();cycle();
 })();
 </script>
 </body>
