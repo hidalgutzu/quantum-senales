@@ -4,6 +4,8 @@
 
 ![QUANTUM Signals](screenshot.png)
 
+![QUANTUM Signals](screenshot-02.png)
+
 **[▶ Live demo](https://dedalomultimedia.com/trading/quantum-senales.html)** · [Español](#español)
 
 ## How it decides (Simons-style, no human opinion)
